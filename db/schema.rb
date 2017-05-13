@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511200435) do
+ActiveRecord::Schema.define(version: 20170513233955) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170511200435) do
     t.string "email"
     t.string "password_digest"
     t.string "uid",             limit: 8
+    t.string "provider"
   end
 
 end
