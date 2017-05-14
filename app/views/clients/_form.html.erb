@@ -1,0 +1,27 @@
+<%= form_for @client do |f| %>
+  <%= f.label :name %>
+  <br></br>
+  <%= f.text_field :name %>
+  <br></br>
+  <%= f.label :email %>
+  <br></br>
+  <%= f.text_field :email %>
+  <br></br>
+  <%= f.label :phone %>
+  <br></br>
+  <%= f.telephone_field :phone %>
+  <br></br>
+  <%= f.label :age %>
+  <br></br>
+  <%= f.number_field :age %>
+  <br></br>
+  <%= f.label :weight %>
+  <br></br>
+  <%= f.number_field :weight %>
+  <br></br>
+  <%= f.label :weight %>
+  <br></br>
+  <%= f.text_field :weight %>
+  <br></br>
+  <%= f.submit %>
+<% end %>
