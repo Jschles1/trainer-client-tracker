@@ -13,4 +13,13 @@ class ClientsController < ApplicationController
 
   def update
   end
+
+  def destroy
+  end
+
+  private
+
+  def client_params
+    params.require(:client).permit(:name, :email, :phone, :age, :weight, :goal)
+  end
 end
