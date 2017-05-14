@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513233955) do
+ActiveRecord::Schema.define(version: 20170514000907) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,11 +28,13 @@ ActiveRecord::Schema.define(version: 20170513233955) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.string "uid",             limit: 8
-    t.string "provider"
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "uid",              limit: 8
+    t.string   "provider"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
 end
