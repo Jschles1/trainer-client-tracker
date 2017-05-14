@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     if !params[:provider].nil?
       oauth_login
-    elsif # If email and/or password are left blank:
+    elsif params[:user][:email].blank? || params[:user][:password].blank?
       # redirect to login form with errors
     else
       normal_login
