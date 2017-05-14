@@ -1,1 +1,15 @@
-<%= render 'form' %>
+<%= form_for @user do |f| %>
+  <%= f.label :name, "Enter Your Name:" %>
+  <br></br>
+  <%= f.text_field :name %>
+  <br></br>
+  <%= f.label :email, "Enter Your Email:" %>
+  <br></br>
+  <%= f.text_field :email %>
+  <br></br>
+  <%= f.label :password, "Password (Must be at least 8 char.):" %>
+  <br></br>
+  <%= f.password_field :password %>
+  <br></br>
+  <%= f.submit "Create Account" %>
+<% end %>
