@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :already_logged_in?, only: [:new]
+
   def new
     @user = User.new
     @error = nil
