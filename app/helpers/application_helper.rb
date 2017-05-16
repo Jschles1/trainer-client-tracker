@@ -7,7 +7,7 @@ module ApplicationHelper
     !!current_user
   end
 
-  ef user_authorized?
+  def user_authorized?
     if !logged_in?
       redirect_to login_path
     else
