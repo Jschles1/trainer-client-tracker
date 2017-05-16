@@ -7,6 +7,14 @@ module ApplicationHelper
     !!current_user
   end
 
+  def login_required
+    redirect_to login_path if !logged_in?
+  end
+
+  def already_logged_in?
+    redirect_to clients_path if logged_in?
+  end
+
   def user_authorized?
     if !logged_in?
       redirect_to login_path
