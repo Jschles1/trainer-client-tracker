@@ -1,0 +1,6 @@
+<h1>Your Appointments:</h1>
+<br></br>
+<%= @appointments.each do |a| %>
+  <h2>Client: <%= a.client.name %></h2>
+  <h3>Date: <%= a.date %></h3>
+<% end %>
