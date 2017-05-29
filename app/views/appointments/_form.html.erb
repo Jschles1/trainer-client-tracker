@@ -1,6 +1,6 @@
 <%= form_for @appointment do |f| %>
   <%= f.label :date, "Appointment Date & Time" %>
   <br></br>
-  <%= select_datetime(@appointment[:date], order: [:month, :day, :year, :hour], ampm: true) %>
-  <%= f.submit %>
+  <%= f.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
+  <%= f.submit "Schedule Appointment" %>
 <% end %>
