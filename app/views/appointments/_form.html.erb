@@ -4,9 +4,9 @@
   <%= f.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
   <br></br>
   <p>Select an Existing Client:</p>
-  <%= f.collection_select :client, current_user.clients, :id, :name %>
+  <%= f.collection_select :client, current_user.clients, :id, :name, :include_blank => true %>
   <br></br>
-  <p>Create a New Client:</p>
+  <p>Or Create a New Client:</p>
   <%= f.fields_for :client do |c| %>
     <%= c.label :name %>
     <br></br>

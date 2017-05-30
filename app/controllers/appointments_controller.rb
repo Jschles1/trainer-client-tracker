@@ -9,6 +9,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    
   end
 
   def edit
@@ -23,7 +24,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date, :client_attributes => [
+    params.require(:appointment).permit(:date, :user_id, :client_id, :client_attributes => [
       :name,
       :email,
       :phone,
