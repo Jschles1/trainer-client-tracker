@@ -2,5 +2,36 @@
   <%= f.label :date, "Appointment Date & Time" %>
   <br></br>
   <%= f.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
+  <br></br>
+  <p>Select an Existing Client:</p>
+  <%= f.collection_select :client, current_user.clients, :id, :name %>
+  <br></br>
+  <p>Create a New Client:</p>
+  <%= f.fields_for :client do |c| %>
+    <%= c.label :name %>
+    <br></br>
+    <%= c.text_field :name %>
+    <br></br>
+    <%= c.label :email %>
+    <br></br>
+    <%= c.text_field :email %>
+    <br></br>
+    <%= c.label :phone %>
+    <br></br>
+    <%= c.telephone_field :phone %>
+    <br></br>
+    <%= c.label :age %>
+    <br></br>
+    <%= c.number_field :age %>
+    <br></br>
+    <%= c.label :weight %>
+    <br></br>
+    <%= c.number_field :weight %>
+    <br></br>
+    <%= c.label :goal %>
+    <br></br>
+    <%= c.text_field :goal %>
+  <% end %>
+  <br></br>
   <%= f.submit "Schedule Appointment" %>
 <% end %>
