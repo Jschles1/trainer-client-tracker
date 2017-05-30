@@ -9,7 +9,12 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    
+    @appointment = Appointment.new(appointment_params)
+    if @appointment.save
+      redirect_to appointments_path
+    else
+      render :new
+    end
   end
 
   def edit
