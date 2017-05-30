@@ -5,6 +5,7 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @appointment.client.build
   end
 
   def create
@@ -17,5 +18,19 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def appointment_params
+    params.require(:appointment).permit(:date, :client_attributes => [
+      :name,
+      :email,
+      :phone,
+      :age,
+      :weight,
+      :goal,
+      :weight_change
+      ])
   end
 end
