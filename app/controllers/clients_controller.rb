@@ -7,9 +7,17 @@ class ClientsController < ApplicationController
 
   def new
     @client = current_user.clients.build
+    @client.appointments.build
   end
 
   def create
+    @client =  Client.new(client_params)
+    @client.appointments.update(user_id: current_user.id)
+    if @client.save
+      redirect_to clients_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -28,6 +36,10 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name, :email, :phone, :age, :weight, :goal, :weight_change)
+    params.require(:client).permit(:name, :email, :phone, :age, :weight, :goal, :weight_change, :appointments_attributes => [
+      :user_id,
+      :client_id,
+      :date
+      ])
   end
 end
