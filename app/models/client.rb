@@ -8,7 +8,13 @@ class Client < ApplicationRecord
   validates :email, uniqueness: true, email: true
   validates :age, numericality: { greater_than: 0, less_than: 100 }
   validates :weight, numericality: { greater_than: 0 }
-  # validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
-  # validates_format_of :phone, :with => /\d{3}-\d{3}-\d{4}/, :on => :create
   validates :phone, phone: true
+
+  def appointments_attributes=(appointments_attributes)
+    appointments_attributes.values.each do |appointment_attributes|
+      appointment = Appointment.create(appointment_attributes)
+      self.appointments << appointment
+      appointment.update(appointment_attributes)
+    end
+  end
 end
