@@ -30,7 +30,7 @@
     <br></br>
     <%= c.label :goal, "Client Goal:" %>
     <br></br>
-    <%= c.text_field :goal %>
+    <%= c.select :goal, ["Lose Weight", "Gain Weight"] %>
   <% end %>
   <br></br>
   <%= f.submit "Schedule Appointment" %>

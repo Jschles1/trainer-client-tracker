@@ -21,7 +21,7 @@
   <br></br>
   <%= f.label :goal, "Client Goal:" %>
   <br></br>
-  <%= f.text_field :goal %>
+  <%= f.select :goal, ["Lose Weight", "Gain Weight"] %>
   <br></br>
   <%= f.fields_for :appointments do |app| %>
     <%= app.label :date, "Schedule First Appointment:" %>
