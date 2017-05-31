@@ -7,10 +7,9 @@ class Appointment < ApplicationRecord
   validates :date, uniqueness: true
 
   def client_attributes=(client_attributes)
-    # self.client = Client.find_or_create_by(name: client_attributes[:name])
-    # self.client.update(client_attributes)
     if client_attributes[:name] != ""
       self.client = Client.find_or_create_by(client_attributes)
+      self.client.update(client_attributes)
     end
   end
 end
