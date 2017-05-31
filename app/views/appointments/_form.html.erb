@@ -3,32 +3,32 @@
   <br></br>
   <%= f.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
   <br></br>
-  <p>Select an Existing Client:</p>
+  <h4>Select an Existing Client:</h4>
   <%= f.collection_select :client, current_user.clients, :id, :name, :include_blank => true %>
   <br></br>
-  <p>Or Create a New Client:</p>
+  <h4>Or Create a New Client:</h4>
   <%= f.fields_for :client do |c| %>
-    <%= c.label :name %>
+    <%= c.label :name, "Name:" %>
     <br></br>
     <%= c.text_field :name %>
     <br></br>
-    <%= c.label :email %>
+    <%= c.label :email, "Email: (name@email.com)" %>
     <br></br>
     <%= c.text_field :email %>
     <br></br>
-    <%= c.label :phone %>
+    <%= c.label :phone, "Phone Number: (XXX-XXX-XXXX)" %>
     <br></br>
     <%= c.telephone_field :phone %>
     <br></br>
-    <%= c.label :age %>
+    <%= c.label :age, "Age:" %>
     <br></br>
     <%= c.number_field :age %>
     <br></br>
-    <%= c.label :weight %>
+    <%= c.label :weight, "Weight: (lbs.)" %>
     <br></br>
     <%= c.number_field :weight %>
     <br></br>
-    <%= c.label :goal %>
+    <%= c.label :goal, "Client Goal:" %>
     <br></br>
     <%= c.text_field :goal %>
   <% end %>
