@@ -4,12 +4,13 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @appointment = Appointment.new
+    @appointment = current_user.appointments.build
     @appointment.build_client
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
+    # @appointment = current_user.appointments.create(appointment_params)
+    @appointment =  Appointment.new(appointment_params.merge(user_id: current_user.id))
     if @appointment.save
       redirect_to appointments_path
     else

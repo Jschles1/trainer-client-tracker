@@ -13,6 +13,7 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @client = Client.find(params[:id])
   end
 
   def edit
