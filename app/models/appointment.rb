@@ -6,6 +6,10 @@ class Appointment < ApplicationRecord
   validates :date, presence: true
   validates :date, uniqueness: true
 
+  def date_parse
+    date.strftime("%b %e, %l:%M %p")
+  end
+
   def client_attributes=(client_attributes)
     if client_attributes[:name] != ""
       self.client = Client.find_or_create_by(client_attributes)
