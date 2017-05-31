@@ -22,5 +22,12 @@
   <%= f.label :goal, "Client Goal:" %>
   <br></br>
   <%= f.text_field :goal %>
+  <br></br>
+  <%= f.fields_for :appointments do |app| %>
+    <%= app.label :date, "Schedule First Appointment:" %>
+    <br></br>
+    <%= app.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
+  <% end %>
+  <br></br>
   <%= f.submit %>
 <% end %>
