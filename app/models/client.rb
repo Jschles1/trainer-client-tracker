@@ -11,10 +11,12 @@ class Client < ApplicationRecord
   validates :phone, phone: true
 
   def appointments_attributes=(appointments_attributes)
-    appointments_attributes.values.each do |appointment_attributes|
-      appointment = Appointment.create(appointment_attributes)
-      self.appointments << appointment
-      appointment.update(appointment_attributes)
+    if self.valid?
+      appointments_attributes.values.each do |appointment_attributes|
+        appointment = Appointment.create(appointment_attributes)
+        self.appointments << appointment
+        appointment.update(appointment_attributes)
+      end
     end
   end
 end
