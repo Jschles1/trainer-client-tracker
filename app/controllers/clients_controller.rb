@@ -21,10 +21,11 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client = Client.find(params[:id])
+    @client = current_user.clients.find(params[:id])
   end
 
   def edit
+    @client = current_user.clients.find(params[:id])
   end
 
   def update
