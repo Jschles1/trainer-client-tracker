@@ -28,6 +28,10 @@ class ClientsController < ApplicationController
     @client = current_user.clients.find(params[:id])
   end
 
+  def appointment_complete
+    @client = current_user.clients.find(params[:id])
+  end
+
   def update
     @client = current_user.clients.find(params[:id])
     if @client.update(client_params)
