@@ -23,9 +23,13 @@ class Client < ApplicationRecord
   def appointments_attributes=(appointments_attributes)
     if self.valid?
       appointments_attributes.values.each do |appointment_attributes|
-        appointment = Appointment.create(appointment_attributes)
-        self.appointments << appointment
-        appointment.update(appointment_attributes)
+        if self.appointments.last != nil
+          self.appointments.last.update(appointment_attributes)
+        else
+          appointment = Appointment.create(appointment_attributes)
+          self.appointments << appointment
+          appointment.update(appointment_attributes)
+        end
       end
     end
   end
