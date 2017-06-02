@@ -1,0 +1,8 @@
+<h1>Reschedule Appointment for <%= @appointment.client.name %>:</h1>
+<%= form_for @appointment do |f| %>
+  <%= f.label :date, "Appointment Date & Time" %>
+  <br></br>
+  <%= f.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
+  <br></br>
+  <%= f.submit "Reschedule Appointment" %>
+<% end %>
