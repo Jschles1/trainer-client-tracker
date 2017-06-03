@@ -1,9 +1,21 @@
 <nav class="navbar navbar-default">
-  <% if !logged_in? %>
-    <%= link_to "Log In", login_path %>
-    <%= link_to "Sign Up", signup_path %>
-  <% else %>
-    <%= link_to "Log Out", logout_path %>
-    <p>Signed in as: <%= current_user.name %></p>
-  <% end %>
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <% if !logged_in? %>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Log In", login_path %></li>
+        <li><%= link_to "Sign Up", signup_path %></li>
+      </ul>
+    <% else %>
+      <p class="navbar-brand">Signed in as: <%= current_user.name %></p>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "My Clients", clients_path %></li>
+        <li><%= link_to "My Appointments", appointments_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Log Out", logout_path %></li>
+      </ul>
+    <% end %>
+    </div>
+  </div>
 </nav>
