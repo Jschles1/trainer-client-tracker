@@ -6,6 +6,15 @@
 <br></br>
 <h2>Age: <%= @client.age %></h2>
 <br></br>
-<h2>Weight: <%= @client.weight %></h2>
+<h2>Current Weight: <%= @client.weight %></h2>
 <br></br>
 <h2>Goal: <%= @client.goal %></h2>
+<% if @client.weight_change != nil %>
+  <h3>Progress:</h3>
+  <br></br>
+  <% if @client.goal == "Lose Weight" %>
+    <h4><%= @client.name %> has lost <% @client.weight_change %> lbs. so far.</h4>
+  <% elsif @client.goal == "Gain Weight" %>
+    <h4><%= @client.name %> has gained <% @client.weight_change %> lbs. so far.</h4>
+  <% end %>
+<% end %>
