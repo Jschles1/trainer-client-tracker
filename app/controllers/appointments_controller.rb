@@ -19,4 +19,9 @@ class AppointmentsController < ApplicationController
   def destroy
   end
 
+  private
+
+  def appointment_params
+    params.require(:appointment).permit(:date, :user_id, :client_id)
+  end
 end
