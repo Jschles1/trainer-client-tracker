@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :appointments
   resources :sessions, only: [:create]
 
-  get 'clients/:id/appointment_complete', to: 'clients#appointment_complete', as: 'appointment_complete' 
+  get 'clients/:id/appointment_complete', to: 'clients#appointment_complete', as: 'appointment_complete'
+  patch 'clients/:id/update_progress', to: 'clients#update_progress', as: 'update_progress'
 
   get '/signup', to: 'users#new', as: 'signup'
   get '/login', to: 'sessions#new', as: 'login'
