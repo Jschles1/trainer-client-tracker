@@ -1,4 +1,4 @@
-<%= form_for @client, :url => url_for(:controller => 'clients', :action => 'update') do |f| %>
+<%= form_for @client, :url => url_for(:controller => 'clients', :action => 'update_progress') do |f| %>
   <%= f.label :weight_change, "How many lbs. were lost/gained since last appointment?" %>
   <br></br>
   <%= f.number_field :weight_change %>
