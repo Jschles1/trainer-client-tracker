@@ -22,6 +22,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = current_user.clients.find(params[:id])
+
   end
 
   def edit
@@ -30,6 +31,17 @@ class ClientsController < ApplicationController
 
   def appointment_complete
     @client = current_user.clients.find(params[:id])
+  end
+
+  def update_progress
+    @client = current_user.clients.find(params[:id])
+    if @client.valid?
+      @client.document_progress(client_params[:weight_change].to_i)
+      @client.complete_appointment
+      redirect_to client_path(@client)
+    else
+      render :appointment_complete
+    end
   end
 
   def update
@@ -47,7 +59,8 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name, :email, :phone, :age, :weight, :goal, :weight_change, :appointments_attributes => [
+    params.require(:client).permit(:id, :name, :email, :phone, :age, :weight, :goal, :weight_change, :appointments_attributes => [
+      :id,
       :user_id,
       :client_id,
       :date
