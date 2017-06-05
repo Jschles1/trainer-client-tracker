@@ -3,4 +3,5 @@
 <%= @appointments.each do |a| %>
   <h2>Client: <%= a.client.name %><br></br></h2>
   <h3>Date: <%= a.date_parse %><br></br></h3>
+  <a class="btn btn-default" href="clients/<%= a.client_id %>/appointment_complete" role="button">Appointment Complete</a>
 <% end %>
