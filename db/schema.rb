@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170603034445) do
     t.integer "age"
     t.integer "weight"
     t.string  "goal"
-    t.integer "weight_change",          default: 0
+    t.integer "weight_change",          default: 0, null: false
     t.integer "completed_appointments", default: 0
   end
 
