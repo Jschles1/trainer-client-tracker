@@ -36,7 +36,8 @@ class ClientsController < ApplicationController
   def update_progress
     @client = current_user.clients.find(params[:id])
     if @client.valid?
-      @client.document_progress(client_params[:weight_change].to_i)
+      @client.document_progress(client_params[:weight].to_i)
+      @client.update(client_params)
       @client.complete_appointment
       redirect_to client_path(@client)
     else
