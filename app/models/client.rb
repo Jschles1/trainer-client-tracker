@@ -10,14 +10,30 @@ class Client < ApplicationRecord
   validates :weight, numericality: { greater_than: 0 }
   validates :phone, phone: true
 
-  def document_progress(progress)
-    if self.goal == "Gain Weight"
-      self.weight_change = progress
-      self.weight += self.weight_change
-    elsif self.goal == "Lose Weight"
-      self.weight_change = progress
-      self.weight -= self.weight_change
+  #before_create :set_weight_change
+
+  def self.most_progress
+
+  end
+
+  def self.most_dedicated
+
+  end
+
+  def complete_appointment
+    self.update(completed_appointments: self.completed_appointments += 1)
+  end
+
+  def document_progress(new_weight)
+    if self.goal == "Lose Weight"
+      self.update(weight_change: (self.weight - new_weight))
+    elsif self.goal == "Gain Weight"
+      self.update(weight_change: (new_weight - self.weight))
     end
+  end
+
+  def set_weight_change
+    self.weight_change = 0
   end
 
   def appointments_attributes=(appointments_attributes)
