@@ -10,8 +10,6 @@ class Client < ApplicationRecord
   validates :weight, numericality: { greater_than: 0 }
   validates :phone, phone: true
 
-  #before_create :set_weight_change
-
   def self.most_progress
 
   end
@@ -30,10 +28,6 @@ class Client < ApplicationRecord
     elsif self.goal == "Gain Weight"
       self.update(weight_change: (new_weight - self.weight))
     end
-  end
-
-  def set_weight_change
-    self.weight_change = 0
   end
 
   def appointments_attributes=(appointments_attributes)
