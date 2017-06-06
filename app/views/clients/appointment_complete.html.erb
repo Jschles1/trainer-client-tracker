@@ -1,7 +1,7 @@
 <%= form_for @client, :url => url_for(:controller => 'clients', :action => 'update_progress') do |f| %>
-  <%= f.label :weight_change, "How many lbs. were lost/gained since last appointment?" %>
+  <%= f.label :weight, "Enter Your Client's Current Weight:" %>
   <br></br>
-  <%= f.number_field :weight_change %>
+  <%= f.number_field :weight %>
   <br></br>
   <%= f.fields_for :appointments, @client.appointments.last do |app| %>
     <%= app.label :date, "Schedule Next Appointment:" %>
