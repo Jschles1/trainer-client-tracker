@@ -12,11 +12,19 @@ class Client < ApplicationRecord
   validates :phone, phone: true
 
   def self.most_progress
-
+    order('progress DESC').first.name
   end
 
   def self.most_dedicated
+    order('completed_appointments DESC').first.name
+  end
 
+  def update_progress
+    progress = 0
+    self.weight_histories.each do |w|
+      progress += w.weight_recording
+    end
+    self.update(progress: progress)
   end
 
   def complete_appointment
