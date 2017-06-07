@@ -23,8 +23,12 @@ class Client < ApplicationRecord
     self.update(completed_appointments: self.completed_appointments += 1)
   end
 
-  def document_progress(new_weight)
-
+  def document_progress(new_weight, old_weight)
+    if self.goal == "Lose Weight"
+      self.weight_histories.create(weight_recording: (old_weight - new_weight))
+    elsif self.goal == "Gain Weight"
+      self.weight_histories.create(weight_recording: (new_weight - old_weight))
+    end
   end
 
   def appointments_attributes=(appointments_attributes)
