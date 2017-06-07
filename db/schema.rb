@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603034445) do
+ActiveRecord::Schema.define(version: 20170607003741) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "user_id"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20170603034445) do
     t.integer "age"
     t.integer "weight"
     t.string  "goal"
-    t.integer "weight_change",          default: 0, null: false
     t.integer "completed_appointments", default: 0
   end
 
@@ -41,6 +40,14 @@ ActiveRecord::Schema.define(version: 20170603034445) do
     t.string   "provider"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+  end
+
+  create_table "weight_histories", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "weight_recording"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["client_id"], name: "index_weight_histories_on_client_id"
   end
 
 end
