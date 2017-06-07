@@ -14,8 +14,10 @@ class ClientsController < ApplicationController
     @client =  Client.new(client_params)
     @client.appointments.update(user_id: current_user.id)
     if @client.save
+      @client.weight_histories.create(weight_recording: 0)
       redirect_to clients_path
     else
+      @client.appointments.build
       render :new
     end
   end
@@ -35,9 +37,9 @@ class ClientsController < ApplicationController
 
   def update_progress
     @client = current_user.clients.find(params[:id])
-    if @client.valid?
-      @client.document_progress(client_params[:weight].to_i)
-      @client.update(client_params)
+    @current_weight = @client.weight
+    if @client.update(client_params)
+      @client.document_progress(client_params[:weight].to_i, @current_weight)
       @client.complete_appointment
       redirect_to client_path(@client)
     else
