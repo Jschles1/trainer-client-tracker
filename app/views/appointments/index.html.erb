@@ -1,8 +1,18 @@
 <h1>Your Appointments:</h1>
 <br></br>
-<%= @appointments.each do |a| %>
-  <h2>Client: <%= a.client.name %><br></br></h2>
-  <h3>Date: <%= a.date_parse %><br></br></h3>
-  <%= link_to "Reschedule Appointment", edit_appointment_path(a), class: "btn btn-default" %>
-  <%= link_to "Appointment Complete", appointment_complete_path(a.client), class: "btn btn-success" %>
-<% end %>
+<table class="table">
+  <tr class="header-row">
+    <th class="column-header">Client:</th>
+    <th class="column-header">Date:</th>
+    <th class="column-header"></th>
+    <th class="column-header"></th>
+  </tr>
+  <% @appointments.each do |a| %>
+    <tr>
+      <td><%= a.client.name %></td>
+      <td><%= a.date_parse %></td>
+      <td><%= link_to "Reschedule Appointment", edit_appointment_path(a), class: "btn btn-default" %></td>
+      <td><%= link_to "Appointment Complete", appointment_complete_path(a.client), class: "btn btn-success" %></td>
+    </tr>
+  <% end %>
+</table>
