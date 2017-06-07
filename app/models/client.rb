@@ -2,6 +2,7 @@ class Client < ApplicationRecord
   include ActiveModel::Validations
 
   has_many :appointments
+  has_many :weight_histories
   has_many :users, through: :appointments
 
   validates :name, :email, :phone, :age, :weight, :goal, presence: true
@@ -23,11 +24,7 @@ class Client < ApplicationRecord
   end
 
   def document_progress(new_weight)
-    if self.goal == "Lose Weight"
-      self.update(weight_change: (self.weight - new_weight))
-    elsif self.goal == "Gain Weight"
-      self.update(weight_change: (new_weight - self.weight))
-    end
+
   end
 
   def appointments_attributes=(appointments_attributes)
