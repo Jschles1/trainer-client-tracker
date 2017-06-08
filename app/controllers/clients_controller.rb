@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
       @client.weight_histories.create(weight_recording: 0)
       redirect_to clients_path
     else
-      @client.appointments.build
+      @client.appointments.build if @client.appointments = []
       render :new
     end
   end
@@ -40,6 +40,7 @@ class ClientsController < ApplicationController
     @current_weight = @client.weight
     if @client.update(client_params)
       @client.document_progress(client_params[:weight].to_i, @current_weight)
+      @client.update_progress
       @client.complete_appointment
       redirect_to client_path(@client)
     else
