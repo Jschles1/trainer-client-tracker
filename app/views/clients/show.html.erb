@@ -1,3 +1,4 @@
+<%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-primary" %>
 <h1><%= @client.name %></h1>
 <br></br>
 <h2>Email: <%= @client.email %></h2>
@@ -9,12 +10,13 @@
 <h2>Current Weight: <%= @client.weight %></h2>
 <br></br>
 <h2>Goal: <%= @client.goal %></h2>
-<% if @client.weight_change != nil %>
+<br></br>
+<% if @client.weight_histories != nil %>
   <h3>Progress:</h3>
   <br></br>
   <% if @client.goal == "Lose Weight" %>
-    <h4><%= @client.name %> has lost <% @client.weight_change %> lbs. so far.</h4>
+    <h4><%= @client.name %> has lost <%= @client.progress %> lbs. since your first appointment.</h4>
   <% elsif @client.goal == "Gain Weight" %>
-    <h4><%= @client.name %> has gained <% @client.weight_change %> lbs. so far.</h4>
+    <h4><%= @client.name %> has gained <%= @client.progress %> lbs. since your first appointment.</h4>
   <% end %>
 <% end %>

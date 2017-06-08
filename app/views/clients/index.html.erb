@@ -1,4 +1,7 @@
 <%= link_to "Add a New Client", new_client_path, class: "btn btn-primary" %>
+<h4>Client With Most Progress Made: <%= @clients.most_progress %></h4>
+<h4>Client With Most Dedication: <%= @clients.most_dedicated %></h4>
+<br>
 <h1>Your Clients:</h1>
 <br></br>
 <% @clients.each do |client| %>
