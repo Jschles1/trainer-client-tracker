@@ -8,4 +8,11 @@ module ClientHelper
     end
   end
 
+  def most_dedicated_client(clients)
+    clients.most_dedicated.name
+  end
+
+  def most_progressed_client(clients)
+    clients.most_progress.name
+  end
 end

@@ -12,11 +12,11 @@ class Client < ApplicationRecord
   validates :phone, phone: true
 
   def self.most_progress
-    order('progress DESC').first.name
+    order('progress DESC').first
   end
 
   def self.most_dedicated
-    order('completed_appointments DESC').first.name
+    order('completed_appointments DESC').first
   end
 
   def update_progress
