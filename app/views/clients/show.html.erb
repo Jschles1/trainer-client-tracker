@@ -11,12 +11,4 @@
 <br></br>
 <h2>Goal: <%= @client.goal %></h2>
 <br></br>
-<% if @client.weight_histories != nil %>
-  <h3>Progress:</h3>
-  <br></br>
-  <% if @client.goal == "Lose Weight" %>
-    <h4><%= @client.name %> has lost <%= @client.progress %> lbs. since your first appointment.</h4>
-  <% elsif @client.goal == "Gain Weight" %>
-    <h4><%= @client.name %> has gained <%= @client.progress %> lbs. since your first appointment.</h4>
-  <% end %>
-<% end %>
+<%= client_progress(@client) %>
