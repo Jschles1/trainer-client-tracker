@@ -24,11 +24,6 @@
   <br></br>
   <%= f.select :goal, ["Lose Weight", "Gain Weight"] %>
   <br></br>
-  <%= f.fields_for :appointments do |app| %>
-    <%= app.label :date, "Schedule First Appointment:" %>
-    <br></br>
-    <%= app.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
-  <% end %>
-  <br></br>
+  <%= appointment_fields(f, @client, @appointment) %>
   <%= f.submit %>
 <% end %>

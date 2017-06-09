@@ -4,11 +4,6 @@
   <br></br>
   <%= f.number_field :weight %>
   <br></br>
-  <%= f.fields_for :appointments, @client.appointments.last do |app| %>
-    <%= app.label :date, "Schedule Next Appointment:" %>
-    <br></br>
-    <%= app.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
-  <% end %>
-  <br></br>
+  <%= appointment_fields(f, @client, @client.appointments.last) %>
   <%= f.submit %>
 <% end %>
