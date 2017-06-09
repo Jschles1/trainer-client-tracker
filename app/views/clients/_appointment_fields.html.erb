@@ -1,0 +1,6 @@
+<%= f.fields_for :appointments do |app| %>
+  <%= appointment_field_label(app, client) %>
+  <br></br>
+  <%= app.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
+<% end %>
+<br></br>
