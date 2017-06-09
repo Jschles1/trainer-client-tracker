@@ -10,8 +10,8 @@
   <% @appointments.each do |a| %>
     <tr>
       <td><%= a.client.name %></td>
-      <td><%= a.date_parse %></td>
-      <td><%= link_to "Reschedule Appointment", edit_appointment_path(a), class: "btn btn-default" %></td>
+      <td><%= date_parse(a) %></td>
+      <td><%= link_to "Reschedule Appointment", edit_client_appointment_path(a.client, a), class: "btn btn-default" %></td>
       <td><%= link_to "Appointment Complete", appointment_complete_path(a.client), class: "btn btn-success" %></td>
     </tr>
   <% end %>
