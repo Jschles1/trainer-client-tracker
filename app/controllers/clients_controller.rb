@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :login_required
+  before_action :find_and_set_client, only: [:show, :edit, :appointment_complete, :update_progress, :update, :destroy]
 
   def index
     @clients = current_user.clients
@@ -23,20 +24,15 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client = current_user.clients.find(params[:id])
-
   end
 
   def edit
-    @client = current_user.clients.find(params[:id])
   end
 
   def appointment_complete
-    @client = current_user.clients.find(params[:id])
   end
 
   def update_progress
-    @client = current_user.clients.find(params[:id])
     @current_weight = @client.weight
     if @client.update(client_params)
       @client.document_progress(client_params[:weight].to_i, @current_weight)
@@ -49,7 +45,6 @@ class ClientsController < ApplicationController
   end
 
   def update
-    @client = current_user.clients.find(params[:id])
     if @client.update(client_params)
       redirect_to client_path(@client)
     else
@@ -61,6 +56,13 @@ class ClientsController < ApplicationController
   end
 
   private
+
+  def find_and_set_client
+    @client = current_user.clients.find_by(id: params[:id])
+    if @client.nil?
+      redirect_to clients_path, alert: "Client not found."
+    end
+  end
 
   def client_params
     params.require(:client).permit(:id, :name, :email, :phone, :age, :weight, :goal, :weight_change, :appointments_attributes => [
