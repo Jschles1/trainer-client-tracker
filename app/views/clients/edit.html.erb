@@ -1,28 +1,2 @@
 <%= render partial: 'layouts/errors', locals: { object: @client } %>
-<%= form_for @client do |f| %>
-  <%= f.label :name, "Name:" %>
-  <br></br>
-  <%= f.text_field :name %>
-  <br></br>
-  <%= f.label :email, "Email: (name@email.com)" %>
-  <br></br>
-  <%= f.text_field :email %>
-  <br></br>
-  <%= f.label :phone, "Phone Number: (XXX-XXX-XXXX)" %>
-  <br></br>
-  <%= f.telephone_field :phone %>
-  <br></br>
-  <%= f.label :age, "Age:" %>
-  <br></br>
-  <%= f.number_field :age %>
-  <br></br>
-  <%= f.label :weight, "Weight: (lbs.)" %>
-  <br></br>
-  <%= f.number_field :weight %>
-  <br></br>
-  <%= f.label :goal, "Client Goal:" %>
-  <br></br>
-  <%= f.select :goal, ["Lose Weight", "Gain Weight"] %>
-  <br></br>
-  <%= f.submit %>
-<% end %>
+<%= render 'form' %>
