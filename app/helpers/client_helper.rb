@@ -20,10 +20,10 @@ module ClientHelper
   end
 
   def most_dedicated_client(clients)
-    clients.most_dedicated.name
+    clients.most_dedicated.name if clients.most_dedicated != nil
   end
 
   def most_progressed_client(clients)
-    clients.most_progress.name
+    clients.most_progress.name if clients.most_progress != nil
   end
 end

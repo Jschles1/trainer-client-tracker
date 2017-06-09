@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
 
   def new
     @client = current_user.clients.build
-    @client.appointments.build
+    @appointment = @client.appointments.build
   end
 
   def create
