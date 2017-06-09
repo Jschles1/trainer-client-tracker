@@ -1,5 +1,5 @@
 <%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-primary" %>
-<h1><%= @client.name %></h1>
+<h1><%= client_name(@client) %></h1>
 <br></br>
 <h2>Email: <%= @client.email %></h2>
 <br></br>
