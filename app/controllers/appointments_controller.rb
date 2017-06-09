@@ -4,7 +4,14 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @appointment = current_user.appointments.find(params[:id])
+    # @appointment = current_user.appointments.find(params[:id])
+    @client = current_user.clients.find_by(id: params[:client_id])
+    if @client.nil?
+      redirect_to appointments_path, alert: "Client not found."
+    else
+      @appointment = @client.appointments.find(params[:id])
+      redirect_to appointments_path, alert: "Appointment not found." if @appointment.nil?
+    end
   end
 
   def update
