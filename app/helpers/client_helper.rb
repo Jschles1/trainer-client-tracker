@@ -9,12 +9,11 @@ module ClientHelper
   end
 
   def client_progress(client)
-    if client.weight_histories != nil
-      content_tag(:h3, "Progress:")
-      content_tag(:br)
-      if client.goal == "Lose Weight"
+    if client.progress != 0
+      case client.goal
+      when "Lose Weight"
         content_tag(:h4, "#{client_name(client)} has lost #{client.progress} lbs. since your first appointment.")
-      elsif client.goal == "Gain Weight"
+      when "Gain Weight"
         content_tag(:h4, "#{client_name(client)} has gained #{client.progress} lbs. since your first appointment.")
       end
     end
