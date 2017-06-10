@@ -3,14 +3,13 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
-    @error = nil
   end
 
   def create
     if !params[:provider].nil?
       oauth_login
     elsif params[:user][:email].blank? || params[:user][:password].blank?
-      # redirect to login form with errors
+      redirect_to login_path, alert: "Log-in failed."
     else
       normal_login
     end
@@ -39,7 +38,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to clients_path
     else
-      # redirect to login form with errors
+      redirect_to login_path, alert: "Log-in failed."
     end
   end
 
@@ -49,7 +48,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to clients_path
     else
-      # redirect to login form with errors
+      redirect_to login_path, alert: "Log-in failed."
     end
   end
 end
