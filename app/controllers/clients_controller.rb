@@ -53,6 +53,10 @@ class ClientsController < ApplicationController
   end
 
   def destroy
+    @client.appointments.destroy_all
+    @client.weight_histories.destroy
+    @client.destroy
+    redirect_to clients_path, alert: "Client removed."
   end
 
   private
