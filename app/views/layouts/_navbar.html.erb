@@ -5,6 +5,7 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "Log In", login_path %></li>
         <li><%= link_to "Sign Up", signup_path %></li>
+        <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
       </ul>
     <% else %>
       <p class="navbar-brand">Signed in as: <%= current_user.name %></p>
