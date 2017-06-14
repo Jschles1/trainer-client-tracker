@@ -47,7 +47,6 @@ class Client < ApplicationRecord
         else
           appointment = Appointment.create(appointment_attributes)
           self.appointments << appointment
-          appointment.update(appointment_attributes)
         end
       end
     end

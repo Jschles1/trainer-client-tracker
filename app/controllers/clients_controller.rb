@@ -18,8 +18,10 @@ class ClientsController < ApplicationController
       @client.weight_histories.create(weight_recording: 0)
       redirect_to clients_path
     else
-      @client.appointments.build if @client.appointments = []
-      render :new
+      # Bug: fields_for :appointments does not appear when rendering :new after
+      # validation error, even after setting @appointment = @client.appointments.build
+      # at this point in the method.
+      redirect_to new_client_path, alert: "Error(s): #{@client.errors.full_messages.join(', ')}."
     end
   end
 
