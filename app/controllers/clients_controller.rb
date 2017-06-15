@@ -37,8 +37,10 @@ class ClientsController < ApplicationController
   def update_progress
     @current_weight = @client.weight
     if @client.update(client_params)
-      @client.document_progress(client_params[:weight].to_i, @current_weight)
-      @client.update_progress
+      if @client.completed_appointments != 0
+        @client.document_progress(client_params[:weight].to_i, @current_weight)
+        @client.update_progress
+      end
       @client.complete_appointment
       redirect_to client_path(@client)
     else

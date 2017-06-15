@@ -1,9 +1,13 @@
 <%= render partial: 'layouts/errors', locals: { object: @client } %>
 <%= form_for @client, :url => url_for(:controller => 'clients', :action => 'update_progress') do |f| %>
-  <%= f.label :weight, "Enter Your Client's Current Weight:" %>
-  <br></br>
-  <%= f.number_field :weight %>
-  <br></br>
+  <% if @client.completed_appointments != 0 %>
+    <%= f.label :weight, "Enter Your Client's Current Weight:" %>
+    <br></br>
+    <%= f.number_field :weight %>
+    <br></br>
+  <% else %>
+    <h4><%= client_name(@client) %> has completed his/her first appointment.</h4>
+  <% end %>
   <%= appointment_fields(f, @client, @client.appointments.last) %>
   <%= f.submit %>
 <% end %>
