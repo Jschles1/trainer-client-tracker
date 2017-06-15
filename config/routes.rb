@@ -2,11 +2,16 @@ Rails.application.routes.draw do
 
   root 'static#home'
 
-  resources :users
-  resources :clients do
+  resources :users do
+    resources :appointments, only: [:index]
+    resources :clients, only: [:new]
+  end
+
+  resources :clients, only: [:create, :edit, :index, :show, :destroy] do
     resources :appointments, only: [:edit]
   end
-  resources :appointments, only: [:index, :update]
+
+  resources :appointments, only: [:update]
   resources :sessions, only: [:create]
 
   get 'clients/:id/appointment_complete', to: 'clients#appointment_complete', as: 'appointment_complete'
