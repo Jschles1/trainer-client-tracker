@@ -1,4 +1,4 @@
-<%= link_to "Add a New Client", new_client_path, class: "btn btn-primary" %>
+<%= link_to "Add a New Client", new_user_client_path(current_user), class: "btn btn-primary" %>
 <br></br>
 <h4>Client With Most Progress Made: <%= most_progressed_client(@clients) %></h4>
 <h4>Client With Most Dedication: <%= most_dedicated_client(@clients) %></h4>
