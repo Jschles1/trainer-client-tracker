@@ -23,12 +23,16 @@ class SessionsController < ApplicationController
   private
 
   def normal_login
-    @user = User.find_by(email: params[:user][:email])
-    if !!@user && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
-      redirect_to clients_path
-    else
+    if params[:user][:email].blank? || params[:user][:password].blank?
       redirect_to login_path, alert: "Log-in failed."
+    else
+      @user = User.find_by(email: params[:user][:email])
+      if !!@user && @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        redirect_to clients_path
+      else
+        redirect_to login_path, alert: "Log-in failed."
+      end
     end
   end
 end
