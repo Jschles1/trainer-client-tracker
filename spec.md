@@ -40,7 +40,7 @@ Specs:
        executes the new action in the Sessions controller. The '/sessions/new' view is then rendered.
 
     2. '/sessions/new' contains a form where the user enters their email and password. Submitting the form sends
-        a POST request to the '/users' route, which then executes the create action in the Sessions controller.
+        a POST request to the '/sessions' route, which then executes the create action in the Sessions controller.
 
     3. In the create action, the normal_login method is executed (since OmniAuth is not being used). The
        normal_login first searches the database for a User object that has an email matching email contained in
