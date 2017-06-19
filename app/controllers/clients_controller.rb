@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
 
   def create
     @client =  Client.new(client_params)
-    @client.appointments.last.update(user_id: current_user.id)
+    @client.appointments.update(user_id: current_user.id)
     if @client.save
       @client.weight_histories.create(weight_recording: 0)
       redirect_to clients_path
@@ -21,7 +21,7 @@ class ClientsController < ApplicationController
       # Bug: fields_for :appointments does not appear when rendering :new after
       # validation error, even after setting @appointment = @client.appointments.build
       # at this point in the method.
-      redirect_to new_client_path, alert: "Error(s): #{@client.errors.full_messages.join(', ')}."
+      redirect_to new_user_client_path(current_user), alert: "Error(s): #{@client.errors.full_messages.join(', ')}."
     end
   end
 
