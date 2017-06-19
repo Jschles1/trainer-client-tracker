@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
 
   def create
     @client =  Client.new(client_params)
-    @client.appointments.update(user_id: current_user.id)
+    @client.appointments.last.update(user_id: current_user.id)
     if @client.save
       @client.weight_histories.create(weight_recording: 0)
       redirect_to clients_path
