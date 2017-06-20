@@ -15,7 +15,6 @@ class ClientsController < ApplicationController
     @client =  Client.new(client_params)
     @client.appointments.update(user_id: current_user.id)
     if @client.save
-      @client.weight_histories.create(weight_recording: 0)
       redirect_to clients_path
     else
       # Bug: fields_for :appointments does not appear when rendering :new after
