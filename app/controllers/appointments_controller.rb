@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+  before_action :login_required
+
   def index
     @appointments = current_user.appointments
   end
