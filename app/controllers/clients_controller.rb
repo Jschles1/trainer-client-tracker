@@ -17,9 +17,6 @@ class ClientsController < ApplicationController
     if @client.save
       redirect_to clients_path
     else
-      # Bug: fields_for :appointments does not appear when rendering :new after
-      # validation error, even after setting @appointment = @client.appointments.build
-      # at this point in the method.
       redirect_to new_user_client_path(current_user), alert: "Error(s): #{@client.errors.full_messages.join(', ')}."
     end
   end
