@@ -1,4 +1,4 @@
-<% if object && object.errors.any? %>
+<% if object.errors.any? %>
   <h3><%= "Error(s):" %></h3>
   <ul>
   <% object.errors.full_messages.uniq.each do |message| %>
