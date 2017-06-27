@@ -31,10 +31,10 @@ class ClientsController < ApplicationController
   end
 
   def update_progress
-    @current_weight = @client.weight
+    @old_weight = @client.weight
     if @client.update(client_params)
       if @client.completed_appointments != 0
-        @client.document_progress(client_params[:weight].to_i, @current_weight)
+        @client.document_progress(client_params[:weight].to_i, @old_weight)
         @client.update_progress
       end
       @client.complete_appointment
@@ -54,7 +54,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client.appointments.destroy_all
-    @client.weight_histories.destroy
+    @client.weight_histories.destroy_all
     @client.destroy
     redirect_to clients_path, alert: "Client removed."
   end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :clients, only: [:new]
   end
 
-  resources :clients, only: [:create, :edit, :index, :show, :destroy] do
+  resources :clients, only: [:create, :edit, :update, :index, :show, :destroy] do
     resources :appointments, only: [:edit]
   end
 
