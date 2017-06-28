@@ -37,3 +37,11 @@ You can access your list of appointments that you have by clicking on "My Appoin
 When you meet and train with your client at the time of an appointment, click the "Appointment Complete" button. For your first appointment with a client, you will simply be asked to schedule the next appointment. For each appointment you complete with this client after the first one, you will be asked how much weight they gained or lost since the last appointment (based on whether their goal was to lose or gain weight). You can view how much progress a client has made toward their goal on their show page.
 
 On the "My Clients" page, your client that has made the most progress towards their goal will be displayed next to "Client With Most Progress Made:". Your client that has showed up for the most appointments will be displayed next to "Client With Most Dedication:"
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at [this project's repository][trainer-client-tracker]. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+This Web Application is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
