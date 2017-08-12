@@ -4,6 +4,10 @@ class ClientsController < ApplicationController
 
   def index
     @clients = current_user.clients
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render json: @clients }
+    end
   end
 
   def new
@@ -22,6 +26,10 @@ class ClientsController < ApplicationController
   end
 
   def show
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @client }
+    end
   end
 
   def edit
