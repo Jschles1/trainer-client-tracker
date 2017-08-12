@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607025238) do
+ActiveRecord::Schema.define(version: 20170812003157) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 20170607025238) do
     t.string  "goal"
     t.integer "completed_appointments", default: 0
     t.integer "progress",               default: 0
+  end
+
+  create_table "details", force: :cascade do |t|
+    t.string  "text"
+    t.integer "client_id"
+    t.index ["client_id"], name: "index_details_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|
