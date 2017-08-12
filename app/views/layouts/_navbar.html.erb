@@ -10,8 +10,8 @@
     <% else %>
       <p class="navbar-brand">Signed in as: <%= current_user.name %></p>
       <ul class="nav navbar-nav">
-        <li><a href="#" onClick="loadClients()">My Clients</a></li>
-        <li><a href="#" onClick="loadAppointments()">My Appointments</a></li>
+        <li><%= link_to "My Clients", clients_path, class: "load_clients" %></li>
+        <li><%= link_to "My Appointments", user_appointments_path(current_user), class: "load_appointments" %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Log Out", logout_path %></li>
