@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20170812003157) do
     t.integer "progress",               default: 0
   end
 
-  create_table "details", force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
     t.string  "text"
     t.integer "client_id"
-    t.index ["client_id"], name: "index_details_on_client_id"
+    t.index ["client_id"], name: "index_notes_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|

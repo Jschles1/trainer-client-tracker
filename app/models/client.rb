@@ -4,7 +4,7 @@ class Client < ApplicationRecord
   has_many :appointments
   has_many :weight_histories
   has_many :users, through: :appointments
-  has_many :details
+  has_many :notes
   
   validates :name, :email, :phone, :age, :weight, :goal, presence: true
   validates :email, uniqueness: true, email: true
