@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static#home'
-  get '/dashboard', to: 'static#dasboard', as: 'dashboard'
+  get '/dashboard', to: 'static#dashboard', as: 'dashboard'
 
   resources :users do
     resources :appointments, only: [:index]
