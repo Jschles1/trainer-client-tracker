@@ -3,5 +3,9 @@ $(function() {
 })
 
 function loadClients() {
-  console.log("This")
- }
+  console.log("This workds")
+}
+
+function loadAppointments() {
+  console.log("This works")
+}

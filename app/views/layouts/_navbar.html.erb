@@ -11,7 +11,7 @@
       <p class="navbar-brand">Signed in as: <%= current_user.name %></p>
       <ul class="nav navbar-nav">
         <li><a href="#" onClick="loadClients()">My Clients</a></li>
-        <li><%= link_to "My Appointments", user_appointments_path(current_user) %></li>
+        <li><a href="#" onClick="loadAppointments()">My Appointments</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Log Out", logout_path %></li>
