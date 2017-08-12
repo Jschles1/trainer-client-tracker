@@ -1,7 +1,7 @@
 $(function() {
-    attachListeners();
+  
 })
 
-function attachListeners() {
-    
-}
+function loadClients() {
+  console.log("This")
+ }
