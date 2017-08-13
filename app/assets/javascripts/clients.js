@@ -12,12 +12,21 @@ class Client {
   }
 }
 
+Client.prototype.indexName = function() {
+  return `<a href="/clients/${this.id}">${this.name}</a>`
+}
+
 $(function() {
   $('a.load_clients').on('click', function(e) {
     e.preventDefault()
-    $('.container').html("")
+    $('.index-list').html("")
+    $('.index-header').html("Your Clients:")
     $.get("/clients.json", function(data) {
-      console.log(data)
+      data.forEach(c => {
+        const newClient = new Client(c.id, c.name, c.email, c.phone, c.age, c.weight,
+        c.goal, c.completed_appointments, c.progress)
+        $('.index-list').append(newClient.indexName())
+      })
     })
   })
 })
