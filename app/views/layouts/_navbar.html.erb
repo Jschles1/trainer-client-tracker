@@ -10,8 +10,10 @@
     <% else %>
       <p class="navbar-brand">Signed in as: <%= current_user.name %></p>
       <ul class="nav navbar-nav">
-        <li><%= link_to "My Clients", clients_path, class: "load_clients" %></li>
-        <li><%= link_to "My Appointments", appointments_path, class: "load_appointments" %></li>
+        <% if current_page?(dashboard_path) %>
+          <li><%= link_to "My Clients", clients_path, class: "load_clients" %></li>
+          <li><%= link_to "My Appointments", appointments_path, class: "load_appointments" %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Log Out", logout_path %></li>
