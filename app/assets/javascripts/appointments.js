@@ -23,7 +23,7 @@ Appointment.prototype.formatRow = function() {
   return `
     <tr>
       <td>${this.client_name}</td>
-      <td>${this.date}</td>
+      <td>${moment(this.date).format('LLL')}</td>
       <td><a href="/clients/${this.client_id}/appointments/${this.id}/edit" class="btn btn-default">Reschedule Appointment</a></td>
       <td><a href="/clients/${this.client_id}/appointment_complete" class="btn btn-success">Appointment Complete</a></td>
     </tr>
