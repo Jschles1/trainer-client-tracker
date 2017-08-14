@@ -3,21 +3,4 @@
 <div class="index-list">
 </div>
 
-<script id="appointments-index-template" type="text/x-handlebars-template">
-  <table class="table">
-    <tr class="header-row">
-      <th class="column-header">Client:</th>
-      <th class="column-header">Date:</th>
-      <th class="column-header"></th>
-      <th class="column-header"></th>
-    </tr>
-    {{#each this}}
-      <tr>
-        <td>{{client.name}}</td>
-        <td>{{date}}</td>
-        <td><a href="/clients/{{client_id}}/appointments/{{id}}/edit" class="btn btn-default">Reschedule Appointment</a></td>
-        <td><a href="/clients/{{client_id}}/appointment_complete" class="btn btn-success">Appointment Complete</a></td>
-      </tr>
-    {{/each}}
-  </table>
-</script>
+
