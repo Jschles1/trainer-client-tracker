@@ -1,3 +1,12 @@
+var tableHeader = `
+  <table class="table">
+    <tr class="header-row">
+      <th class="column-header">Client:</th>
+      <th class="column-header"></th>
+    </tr>
+  </table>
+`
+
 class Client {
   constructor(id, name, email, phone, age, weight, goal, completed_appointments, progress) {
     this.id = id
@@ -12,24 +21,37 @@ class Client {
   }
 }
 
-Client.prototype.indexName = function() {
-  return `<a href="/clients/${this.id}">${this.name}</a><br>`
+Client.prototype.clientIndexFormatter = function() {
+  return `
+    <tr>
+      <td><a href="/clients/${this.id}">${this.name}</a></td>
+      <td><button class="btn btn-default" onClick="loadNotes()">Show Notes</button></td>
+    </tr>
+  `
 }
 
 $(function() {
   $('a.load_clients').on('click', function(e) {
     e.preventDefault()
-    $('.index-list').html("")
     $('.index-header').html("Your Clients:")
+    // $('.index-list').html("")
+    $('.index-list').html(tableHeader)
     $.get("/clients.json", function(data) {
       data.forEach(c => {
         const newClient = new Client(c.id, c.name, c.email, c.phone, c.age, c.weight,
         c.goal, c.completed_appointments, c.progress)
-        $('.index-list').append(newClient.indexName())
+        // $('.index-list').append(newClient.indexName())
+        $('tbody').append(newClient.clientIndexFormatter())
       })
     })
   })
 })
+
+function loadNotes() {
+  console.log("test")
+}
+
+
 
 // function loadClients() {
 //   $('.container').html("X")
