@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'static#dashboard', as: 'dashboard'
 
   resources :users do
-    resources :appointments, only: [:index]
+    # resources :appointments, only: [:index]
     resources :clients, only: [:new]
   end
 
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :appointments, only: [:edit]
   end
 
-  resources :appointments, only: [:update]
+  resources :appointments, only: [:index, :update]
   resources :sessions, only: [:create]
 
   get 'clients/:id/appointment_complete', to: 'clients#appointment_complete', as: 'appointment_complete'

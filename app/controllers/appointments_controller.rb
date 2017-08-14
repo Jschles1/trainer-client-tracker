@@ -3,6 +3,10 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = current_user.appointments
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render json: @appointments }
+    end
   end
 
   def edit
