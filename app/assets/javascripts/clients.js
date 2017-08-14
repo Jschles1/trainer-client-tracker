@@ -13,7 +13,7 @@ class Client {
 }
 
 Client.prototype.indexName = function() {
-  return `<a href="/clients/${this.id}">${this.name}</a>`
+  return `<a href="/clients/${this.id}">${this.name}</a><br>`
 }
 
 $(function() {
