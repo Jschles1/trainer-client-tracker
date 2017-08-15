@@ -25,7 +25,11 @@ Client.prototype.clientIndexFormatter = function() {
   return `
     <tr>
       <td><a href="/clients/${this.id}">${this.name}</a></td>
-      <td><button class="btn btn-default" onClick="loadNotes()">Show Notes</button></td>
+      <td><button class="btn btn-default" data-id="${this.id}">Show Notes</button></td>
+    </tr>
+    <tr class="show-row-${this.id}">
+      <td>Test</td>
+      <td></td>
     </tr>
   `
 }
@@ -34,30 +38,27 @@ $(function() {
   $('a.load_clients').on('click', function(e) {
     e.preventDefault()
     $('.index-header').html("Your Clients:")
-    // $('.index-list').html("")
+    
     $('.index-list').html(tableHeader)
     $.get("/clients.json", function(data) {
       data.forEach(c => {
         const newClient = new Client(c.id, c.name, c.email, c.phone, c.age, c.weight,
         c.goal, c.completed_appointments, c.progress)
-        // $('.index-list').append(newClient.indexName())
         $('tbody').append(newClient.clientIndexFormatter())
+        $(`.show-row-${newClient.id}`).hide()
+        
+        $('button').on('click', function() {
+          toggleNotes(this.dataset.id)
+        })
       })
     })
   })
+
+  $('#note-form').on('submit', function(e) {
+    e.preventDefault()
+  })
 })
 
-function loadNotes() {
-  console.log("test")
+function toggleNotes(id) {
+  $(`.show-row-${id}`).toggle()
 }
-
-
-
-// function loadClients() {
-//   $('.container').html("X")
-//   console.log("This workds")
-// }
-
-// function loadAppointments() {
-//   console.log("This works")
-// }

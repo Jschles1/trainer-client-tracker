@@ -11,7 +11,7 @@
 <br></br>
 
 <h4>Add a Note For <%= client_name(@client) %>:</h4>
-<%= form_for @note do |f| %>
+<%= form_for @note, :html=> {:id => 'note-form'} do |f| %>
   <%= f.text_area :text %>
   <br></br>
   <%= f.submit %>
