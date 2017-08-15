@@ -15,3 +15,17 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .container {
+   border: 2px solid black;
+   border-radius: 5px;
+ }
+
+ .container-fluid {
+   border-bottom: 2px solid black;
+   color: black;
+ }
+
+ .navbar-header {
+   margin-top: 8px;
+ }
