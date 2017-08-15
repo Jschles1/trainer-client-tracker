@@ -26,6 +26,8 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @note = Note.new
+    @notes = @client.notes if @client.notes
     respond_to do |f|
       f.html { render :show }
       f.json { render json: @client }
