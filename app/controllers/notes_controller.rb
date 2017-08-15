@@ -4,6 +4,10 @@ class NotesController < ApplicationController
   end
 
   def create
+    @note = note.new(note_params)
+    if @note.save
+      render json: @note
+    end
   end
 
 end
