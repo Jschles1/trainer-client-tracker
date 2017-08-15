@@ -19,6 +19,7 @@
  .container {
    border: 2px solid black;
    border-radius: 5px;
+   margin: 20px auto;
  }
 
  .container-fluid {
@@ -26,6 +27,14 @@
    color: black;
  }
 
+ .navbar.navbar-default {
+   margin: 0px;
+ }
+
  .navbar-header {
    margin-top: 8px;
+ }
+
+ input {
+   margin-bottom: 15px;
  }
