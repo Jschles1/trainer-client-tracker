@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :appointments, only: [:edit]
   end
 
+  resources :notes, only: [:index, :create, :destroy]
+
   resources :appointments, only: [:index, :update]
   resources :sessions, only: [:create]
 
