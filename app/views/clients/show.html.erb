@@ -26,6 +26,7 @@
     <%= f.hidden_field :client_id, value: @client.id %>
     <%= f.text_area :text %>
     <br></br>
-    <%= f.submit %>
+    <%= f.submit "Add Note", :class => "btn btn-secondary btn-sm" %>
   <% end %>
+  <button class="btn btn-danger btn-sm">Clear Notes</button>
 </div>
