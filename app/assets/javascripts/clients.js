@@ -8,7 +8,7 @@ var tableHeader = `
 `
 
 class Client {
-  constructor(id, name, email, phone, age, weight, goal, completed_appointments, progress) {
+  constructor(id, name, email, phone, age, weight, goal, appointment, progress) {
     this.id = id
     this.name = name
     this.email = email
@@ -16,7 +16,7 @@ class Client {
     this.age = age
     this.weight = weight
     this.goal = goal
-    this.completed_appointments = completed_appointments
+    this.appointment = appointment
     this.progress = progress
   }
 }
@@ -25,10 +25,10 @@ Client.prototype.clientIndexFormatter = function() {
   return `
     <tr>
       <td><a href="/clients/${this.id}">${this.name}</a></td>
-      <td><button class="btn btn-default" data-id="${this.id}">Show Notes</button></td>
+      <td><button class="btn btn-default" data-id="${this.id}">Show Next Appointment:</button></td>
     </tr>
-    <tr class="show-row-${this.id}">
-      <td>Test</td>
+    <tr class="app-row-${this.id}">
+      <td>${moment(this.appointment).format('LLL')}</td>
       <td></td>
     </tr>
   `
@@ -43,12 +43,12 @@ $(function() {
     $.get("/clients.json", function(data) {
       data.forEach(c => {
         const newClient = new Client(c.id, c.name, c.email, c.phone, c.age, c.weight,
-        c.goal, c.completed_appointments, c.progress)
+        c.goal, c.appointments[0].date, c.progress)
         $('tbody').append(newClient.clientIndexFormatter())
-        $(`.show-row-${newClient.id}`).hide()
+        $(`.app-row-${newClient.id}`).hide()
         
         $('button').on('click', function() {
-          toggleNotes(this.dataset.id)
+          toggleAppointment(this.dataset.id)
         })
       })
     })
@@ -66,6 +66,6 @@ $(function() {
   })
 })
 
-function toggleNotes(id) {
-  $(`.show-row-${id}`).toggle()
+function toggleAppointment(id) {
+  $(`.app-row-${id}`).toggle()
 }
