@@ -56,6 +56,13 @@ $(function() {
 
   $('#note-form').on('submit', function(e) {
     e.preventDefault()
+    var action = $(this).attr("action");
+    var params = $(this).serialize();
+    $.post(action, params)
+      .done(function(response) {
+        var note = `<li>${response["text"]}</li>`
+        $('.notes-list').append(note)
+      })
   })
 })
 
