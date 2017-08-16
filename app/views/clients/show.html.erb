@@ -1,18 +1,31 @@
-<%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-primary" %>
-<%= link_to "Remove Client", @client, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to remove this client?" } %>
-<h2><%= client_name(@client) %></h2><br>
-<h4>Email: <%= @client.email %></h4><br>
-<h4>Phone: <%= @client.phone %></h4><br>
-<h4>Age: <%= @client.age %></h4><br>
-<h4>Current Weight: <%= @client.weight %></h4><br>
-<h4>Goal: <%= @client.goal %></h4><br>
-<%= client_progress(@client) %>
+<div class="col-lg-6">
+  <%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-primary" %>
+  <%= link_to "Remove Client", @client, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to remove this client?" } %>
+  <h2><%= client_name(@client) %></h2><br>
+  <h4>Email: <%= @client.email %></h4><br>
+  <h4>Phone: <%= @client.phone %></h4><br>
+  <h4>Age: <%= @client.age %></h4><br>
+  <h4>Current Weight: <%= @client.weight %></h4><br>
+  <h4>Goal: <%= @client.goal %></h4><br>
+  <%= client_progress(@client) %>
 
-<br></br>
-
-<h4>Add a Note For <%= client_name(@client) %>:</h4>
-<%= form_for @note, :html=> {:id => 'note-form'} do |f| %>
-  <%= f.text_area :text %>
   <br></br>
-  <%= f.submit %>
-<% end %>
+</div>
+<div class="col-lg-6">
+  <h4>Notes:</h4>
+  <ul class="notes-list">
+    <% @notes.each do |note| %>
+      <li><%= note.text %></li>
+    <% end %>
+  </ul>
+
+  <br></br>
+  
+  <h4>Add a Note For <%= client_name(@client) %>:</h4>
+  <%= form_for @note, :html=> {:id => 'note-form'} do |f| %>
+    <%= f.hidden_field :client_id, value: @client.id %>
+    <%= f.text_area :text %>
+    <br></br>
+    <%= f.submit %>
+  <% end %>
+</div>
