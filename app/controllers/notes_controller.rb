@@ -10,6 +10,11 @@ class NotesController < ApplicationController
     end
   end
 
+  def destroy
+    @client = Client.find_by(id: params[:client_id])
+    @client.notes.destroy_all
+  end
+
   private
 
   def note_params

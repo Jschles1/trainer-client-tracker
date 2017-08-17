@@ -1,3 +1,6 @@
+<button class="btn btn-secondary left">Previous</button>
+<button class="btn btn-secondary right">Next</button>
+<br></br>
 <div class="col-lg-6">
   <%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-primary" %>
   <%= link_to "Remove Client", @client, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to remove this client?" } %>
@@ -28,5 +31,5 @@
     <br></br>
     <%= f.submit "Add Note", :class => "btn btn-secondary btn-sm" %>
   <% end %>
-  <button class="btn btn-danger btn-sm">Clear Notes</button>
+  <button id="clear-notes" data-id="<%= @client.id %>" class="btn btn-danger btn-sm">Clear Notes</button>
 </div>
