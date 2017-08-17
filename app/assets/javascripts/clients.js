@@ -85,7 +85,7 @@ $(function() {
     })
   })
 
-  $('.btn.btn-secondary.cycle').on('click', function() {
+  $('.btn.btn-secondary.btn-sm').on('click', function() {
     var action = this.id
     var clientId =  this.dataset.id
     var idArray = []
