@@ -85,14 +85,19 @@ $(function() {
     })
   })
 
-  $('#next').on('click', function() {
+  $('.btn.btn-secondary.cycle').on('click', function() {
+    var action = this.id
     var clientId =  this.dataset.id
     var idArray = []
     $.get('/clients.json', function(data) {
       data.forEach(c => {
         idArray.push(c.id)
       })
-      getNext(clientId, idArray)
+      if (action === "next") {
+        getNext(clientId, idArray)
+      } else {
+        getPrevious(clientId, idArray)
+      }
     })
   })
   
@@ -100,4 +105,13 @@ $(function() {
 
 function toggleAppointment(id) {
   $(`.app-row-${id}`).toggle()
+}
+
+function getNext(id, array) {
+  console.log(array)
+}
+
+function getPrevious(id, array) {
+  array.reverse()
+  console.log(array)
 }
