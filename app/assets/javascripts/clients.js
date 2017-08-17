@@ -40,7 +40,6 @@ Client.prototype.clientIndexFormatter = function() {
 
 $(function() {
   $('.client-show').hide()
-
   $('a.load_clients').on('click', function(e) {
     e.preventDefault()
     $('.index-header').html("Your Clients:")
@@ -83,6 +82,17 @@ $(function() {
       success: function() {
         $('.notes-list').empty()
       }
+    })
+  })
+
+  $('#next').on('click', function() {
+    var clientId =  this.dataset.id
+    var idArray = []
+    $.get('/clients.json', function(data) {
+      data.forEach(c => {
+        idArray.push(c.id)
+      })
+      getNext(clientId, idArray)
     })
   })
   
