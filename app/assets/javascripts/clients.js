@@ -3,6 +3,7 @@ var tableHeader = `
     <tr class="header-row">
       <th class="column-header">Client:</th>
       <th class="column-header"></th>
+      <th><th>
     </tr>
   </table>
 `
@@ -26,15 +27,20 @@ Client.prototype.clientIndexFormatter = function() {
     <tr>
       <td><a href="/clients/${this.id}">${this.name}</a></td>
       <td><button class="btn btn-default" data-id="${this.id}">Show Next Appointment:</button></td>
+      <td><button class="btn btn-info" data-id="${this.id}">Show Client Details:</button></td>
+      
     </tr>
     <tr class="app-row-${this.id}">
       <td>${moment(this.appointment).format('LLL')}</td>
       <td></td>
+      
     </tr>
   `
 }
 
 $(function() {
+  $('.client-show').hide()
+
   $('a.load_clients').on('click', function(e) {
     e.preventDefault()
     $('.index-header').html("Your Clients:")
@@ -47,13 +53,14 @@ $(function() {
         $('tbody').append(newClient.clientIndexFormatter())
         $(`.app-row-${newClient.id}`).hide()
         
-        $('button').on('click', function() {
+        $('.btn.btn-default').on('click', function() {
           toggleAppointment(this.dataset.id)
         })
       })
     })
   })
 
+ 
   $('#note-form').on('submit', function(e) {
     e.preventDefault()
     var action = $(this).attr("action");
@@ -64,6 +71,21 @@ $(function() {
         $('.notes-list').append(note)
       })
   })
+
+  $('#clear-notes').on('click', function() {
+    var clientId = this.dataset.id
+    $.ajax({
+      url: '/notes',
+      type: 'DELETE',
+      data: {
+        client_id: clientId
+      },
+      success: function() {
+        $('.notes-list').empty()
+      }
+    })
+  })
+  
 })
 
 function toggleAppointment(id) {
