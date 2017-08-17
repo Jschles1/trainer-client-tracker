@@ -35,8 +35,24 @@
    margin-top: 8px;
  }
 
+ .client-show {
+   border: 2px solid black;
+   border-radius: 5px;
+   margin: 5px auto;
+ }
+
  input {
    margin-bottom: 15px;
+ }
+
+ .btn.btn-secondary.left {
+   float: left;
+   margin-bottom: 5px;
+ }
+
+ .btn.btn-secondary.right {
+   float: right;
+   margin-bottom: 5px;
  }
 
  .btn.btn-danger.btn-sm {
