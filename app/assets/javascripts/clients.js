@@ -59,6 +59,7 @@ $(function() {
     var params = $(this).serialize();
     $.post(action, params)
       .done(function(response) {
+        $('#ajax_submit').attr("disabled", false)
         var note = `<li>${response["text"]}</li>`
         $('.notes-list').append(note)
       })
@@ -80,7 +81,7 @@ $(function() {
 
   $('.btn.btn-secondary.btn-sm').on('click', function() {
     var action = this.id
-    var clientId =  this.dataset.id
+    var clientId =  parseInt(this.dataset.id)
     var idArray = []
     $.get('/clients.json', function(data) {
       data.forEach(c => {
