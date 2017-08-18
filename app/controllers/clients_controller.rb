@@ -19,7 +19,7 @@ class ClientsController < ApplicationController
     @client =  Client.new(client_params)
     @client.appointments.update(user_id: current_user.id)
     if @client.save
-      redirect_to clients_path
+      redirect_to client_path(@client)
     else
       redirect_to new_user_client_path(current_user), alert: "Error(s): #{@client.errors.full_messages.join(', ')}."
     end
@@ -66,7 +66,7 @@ class ClientsController < ApplicationController
     @client.appointments.destroy_all
     @client.weight_histories.destroy_all
     @client.destroy
-    redirect_to clients_path, alert: "Client removed."
+    redirect_to dashboard_path, alert: "Client removed."
   end
 
   private
@@ -74,7 +74,7 @@ class ClientsController < ApplicationController
   def find_and_set_client
     @client = current_user.clients.find_by(id: params[:id])
     if @client.nil?
-      redirect_to clients_path, alert: "Client not found."
+      redirect_to dashboard_path, alert: "Client not found."
     end
   end
 
