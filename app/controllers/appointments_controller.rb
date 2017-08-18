@@ -3,10 +3,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = current_user.appointments
-    respond_to do |f|
-      f.html { render :index }
-      f.json { render json: @appointments }
-    end
+    render json: @appointments
   end
 
   def edit
@@ -22,7 +19,7 @@ class AppointmentsController < ApplicationController
   def update
     @appointment = current_user.appointments.find_by(id: params[:id])
     if @appointment.update(appointment_params)
-      redirect_to dashboard_path
+      redirect_to dashboard_path, alert: "Appointment Updated."
     else
       render :edit
     end

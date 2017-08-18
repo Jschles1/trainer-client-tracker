@@ -4,10 +4,7 @@ class ClientsController < ApplicationController
 
   def index
     @clients = current_user.clients
-    respond_to do |f|
-      f.html { render :index }
-      f.json { render json: @clients }
-    end
+    render json: @clients
   end
 
   def new
