@@ -102,10 +102,26 @@ function toggleAppointment(id) {
 }
 
 function getNext(id, array) {
-  console.log(array)
+  var next = id + 1
+  while (next <= array[array.length - 1]) {
+    if (array.includes(next)) {
+      console.log(next)
+      break;
+    } else {
+      ++next
+    }
+  }
 }
 
 function getPrevious(id, array) {
-  array.reverse()
-  console.log(array)
+  var descArray = array.reverse()
+  var prev = id - 1
+  while (prev >= descArray[descArray.length - 1]) {
+    if (descArray.includes(prev)) {
+      console.log(prev)
+      break;
+    } else {
+      --prev
+    }
+  }
 }
