@@ -9,7 +9,7 @@ var tableHeader = `
 `
 
 class Client {
-  constructor(id, name, email, phone, age, weight, goal, appointment, progress) {
+  constructor(id, name, email, phone, age, weight, goal, appointment, progress, notes) {
     this.id = id
     this.name = name
     this.email = email
@@ -19,6 +19,7 @@ class Client {
     this.goal = goal
     this.appointment = appointment
     this.progress = progress
+    this.notes = notes
   }
 }
 
@@ -33,6 +34,34 @@ Client.prototype.clientIndexFormatter = function() {
       <td></td>
     </tr>
   `
+}
+
+Client.prototype.renderClientShow = function() {
+  $('#previous').attr("data-id", this.id)
+  $('#next').attr("data-id", this.id)
+  $('#edit-client').attr("href", "/clients/" + this.id + "/edit")
+  $('#remove-client').attr("href", "/clients/" + this.id)
+  $('#note_client_id').attr("value", this.id)
+  $('#clear-notes').attr("data-id", this.id)
+
+  $('#client-name').html(this.name)
+  $('#email').html(`Email: ${this.email}`)
+  $('#phone').html(`Phone: ${this.phone}`)
+  $('#age').html(`Age: ${this.age}`)
+  $('#weight').html(`Current Weight: ${this.weight}`)
+  $('#goal').html(`Goal: ${this.goal}`)
+  $('.note-header').html(`Add a Note For ${this.name}:`)
+    
+  if (this.goal === "Lose Weight") {
+    $('#progress').html(`Progress: ${this.progress} lbs. Lost`)
+  } else {
+    $('#progress').html(`Progress: ${this.progress} lbs. Gained`)
+  }
+
+  $('.notes-list').empty()
+  this.notes.forEach(n => {
+    $('.notes-list').append(`<li>${[n.text]}</li>`)
+  })
 }
 
 $(function() {
@@ -126,30 +155,8 @@ function getPrevious(id, array) {
 
 function renderClient(id) {
   $.get("/clients/" + id + ".json", function(data) {
-    $('#previous').attr("data-id", id)
-    $('#next').attr("data-id", id)
-    $('#edit-client').attr("href", "/clients/" + id + "/edit")
-    $('#remove-client').attr("href", "/clients/" + id)
-    $('#note_client_id').attr("value", id)
-    $('#clear-notes').attr("data-id", id)
-
-    $('#client-name').html(data["name"])
-    $('#email').html(`Email: ${data["email"]}`)
-    $('#phone').html(`Phone: ${data["phone"]}`)
-    $('#age').html(`Age: ${data["age"]}`)
-    $('#weight').html(`Current Weight: ${data["weight"]}`)
-    $('#goal').html(`Goal: ${data["goal"]}`)
-    $('.note-header').html(`Add a Note For ${data["name"]}:`)
-    
-    if (data["goal"] === "Lose Weight") {
-      $('#progress').html(`Progress: ${data["progress"]} lbs. Lost`)
-    } else {
-      $('#progress').html(`Progress: ${data["progress"]} lbs. Gained`)
-    }
-
-    $('.notes-list').empty()
-    data.notes.forEach(n => {
-      $('.notes-list').append(`<li>${[n.text]}</li>`)
-    })
+    const client = new Client(data.id, data.name, data.email, data.phone, data.age, data.weight,
+    data.goal, data.appointments[0].date, data.progress, data.notes)
+    client.renderClientShow()
   })
 }
