@@ -16,7 +16,13 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ body {
+   background-image: url("Gym.jpg");
+   background-size: cover;
+ }
+
  .container {
+   background: white;
    border: 2px solid black;
    border-radius: 5px;
    margin: 20px auto;
