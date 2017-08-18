@@ -3,14 +3,14 @@
 <br></br>
 <div class="show-view">
   <div class="col-lg-6">
-    <%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-primary" %>
-    <%= link_to "Remove Client", @client, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to remove this client?" } %>
-    <h2><%= client_name(@client) %></h2><br>
-    <h4>Email: <%= @client.email %></h4><br>
-    <h4>Phone: <%= @client.phone %></h4><br>
-    <h4>Age: <%= @client.age %></h4><br>
-    <h4>Current Weight: <%= @client.weight %></h4><br>
-    <h4>Goal: <%= @client.goal %></h4><br>
+    <%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-primary", id: "edit-client"  %>
+    <%= link_to "Remove Client", @client, method: :delete, class: "btn btn-danger", id: "remove-client", data: { confirm: "Are you sure you want to remove this client?" } %>
+    <h2 id="client-name"><%= client_name(@client) %></h2><br>
+    <h4 id="email">Email: <%= @client.email %></h4><br>
+    <h4 id="phone">Phone: <%= @client.phone %></h4><br>
+    <h4 id="age">Age: <%= @client.age %></h4><br>
+    <h4 id="weight">Current Weight: <%= @client.weight %></h4><br>
+    <h4 id="goal">Goal: <%= @client.goal %></h4><br>
     <%= client_progress(@client) %>
 
     <br></br>
