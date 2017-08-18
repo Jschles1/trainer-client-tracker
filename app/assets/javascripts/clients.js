@@ -36,11 +36,11 @@ Client.prototype.clientIndexFormatter = function() {
 }
 
 $(function() {
-  $('.client-show').hide()
+  $('.most').hide()
   $('a.load_clients').on('click', function(e) {
     e.preventDefault()
     $('.index-header').html("Your Clients:")
-    
+    $('.most').show()
     $('.index-list').html(tableHeader)
     $.get("/clients.json", function(data) {
       data.forEach(c => {

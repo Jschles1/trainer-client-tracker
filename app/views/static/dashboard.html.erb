@@ -1,5 +1,12 @@
 <%= link_to "Add a New Client", new_user_client_path(current_user), class: "btn btn-primary", id: "new-client" %>
 <br></br>
+  
+<div class="most">
+  <h4>Client With Most Progress Made: <%= most_progressed_client(@clients) %></h4>
+  <h4>Client With Most Dedication: <%= most_dedicated_client(@clients) %></h4>
+  <br>
+</div>
+
 <h1 class="index-header"></h1>
 <br></br>
 <div class="index-list">

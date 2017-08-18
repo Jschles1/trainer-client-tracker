@@ -3,5 +3,6 @@ class StaticController < ApplicationController
   end
 
   def dashboard
+    @clients = current_user.clients
   end
 end
