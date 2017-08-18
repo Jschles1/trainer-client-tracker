@@ -105,7 +105,7 @@ function getNext(id, array) {
   var next = id + 1
   while (next <= array[array.length - 1]) {
     if (array.includes(next)) {
-      console.log(next)
+      renderClient(next)
       break;
     } else {
       ++next
@@ -118,10 +118,16 @@ function getPrevious(id, array) {
   var prev = id - 1
   while (prev >= descArray[descArray.length - 1]) {
     if (descArray.includes(prev)) {
-      console.log(prev)
+      renderClient(prev)
       break;
     } else {
       --prev
     }
   }
+}
+
+function renderClient(id) {
+  $.get("/clients/" + id + ".json", function(data) {
+    
+  })
 }
