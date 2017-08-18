@@ -126,21 +126,26 @@ function getPrevious(id, array) {
   }
 }
 
-{/*<a class="btn btn-primary" id="edit-client" href="/clients/2/edit">Edit Client</a>
-<a class="btn btn-danger" id="remove-client" data-confirm="Are you sure you want to remove this client?" 
-rel="nofollow" data-method="delete" href="/clients/2">Remove Client</a>*/}
-
 function renderClient(id) {
   $.get("/clients/" + id + ".json", function(data) {
     $('#previous').attr("data-id", id)
     $('#next').attr("data-id", id)
     $('#edit-client').attr("href", "/clients/" + id + "/edit")
     $('#remove-client').attr("href", "/clients/" + id)
+    $('#note_client_id').attr("value", id)
+    $('#clear-notes').attr("data-id", id)
+
     $('#client-name').html(data["name"])
     $('#email').html(`Email: ${data["email"]}`)
     $('#phone').html(`Phone: ${data["phone"]}`)
     $('#age').html(`Age: ${data["age"]}`)
     $('#weight').html(`Current Weight: ${data["weight"]}`)
     $('#goal').html(`Goal: ${data["goal"]}`)
+    $('.note-header').html(`Add a Note For ${data["name"]}:`)
+    
+    $('.notes-list').empty()
+    data.notes.forEach(n => {
+      $('.notes-list').append(`<li>${[n.text]}</li>`)
+    })
   })
 }

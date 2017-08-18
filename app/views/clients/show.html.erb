@@ -25,7 +25,7 @@
 
     <br></br>
     
-    <h4>Add a Note For <%= client_name(@client) %>:</h4>
+    <h4 class="note-header">Add a Note For <%= client_name(@client) %>:</h4>
     <%= form_for @note, :html=> {:id => 'note-form'} do |f| %>
       <%= f.hidden_field :client_id, value: @client.id %>
       <%= f.text_area :text %>
