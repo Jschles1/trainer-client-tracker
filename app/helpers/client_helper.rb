@@ -22,15 +22,13 @@ module ClientHelper
     end
   end
 
-  def client_progress(client)
-    if client.progress != 0
-      case client.goal
-      when "Lose Weight"
-        content_tag(:h4, "#{client_name(client)} has lost #{client.progress} lbs. since your first appointment.", :id => "progress")
-      when "Gain Weight"
-        content_tag(:h4, "#{client_name(client)} has gained #{client.progress} lbs. since your first appointment.", :id => "progress")
-      end
-    end
+  def client_progress(client)    
+    case client.goal
+    when "Lose Weight"
+      content_tag(:h4, "Progress: #{client.progress} lbs. Lost", :id => "progress")
+    when "Gain Weight"
+      content_tag(:h4, "Progress: #{client.progress} lbs. Gained", :id => "progress")
+    end 
   end
 
   def most_dedicated_client(clients)

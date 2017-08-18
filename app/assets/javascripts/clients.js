@@ -143,6 +143,12 @@ function renderClient(id) {
     $('#goal').html(`Goal: ${data["goal"]}`)
     $('.note-header').html(`Add a Note For ${data["name"]}:`)
     
+    if (data["goal"] === "Lose Weight") {
+      $('#progress').html(`Progress: ${data["progress"]} lbs. Lost`)
+    } else {
+      $('#progress').html(`Progress: ${data["progress"]} lbs. Gained`)
+    }
+
     $('.notes-list').empty()
     data.notes.forEach(n => {
       $('.notes-list').append(`<li>${[n.text]}</li>`)
