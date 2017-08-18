@@ -26,9 +26,9 @@ module ClientHelper
     if client.progress != 0
       case client.goal
       when "Lose Weight"
-        content_tag(:h4, "#{client_name(client)} has lost #{client.progress} lbs. since your first appointment.")
+        content_tag(:h4, "#{client_name(client)} has lost #{client.progress} lbs. since your first appointment.", :id => "progress")
       when "Gain Weight"
-        content_tag(:h4, "#{client_name(client)} has gained #{client.progress} lbs. since your first appointment.")
+        content_tag(:h4, "#{client_name(client)} has gained #{client.progress} lbs. since your first appointment.", :id => "progress")
       end
     end
   end
