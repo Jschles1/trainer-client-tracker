@@ -39,12 +39,8 @@ Client.prototype.clientIndexFormatter = function() {
 Client.prototype.renderClientShow = function() {
   changeShowIdValues(this.id)
   this.renderClientStats()  
-
-  if (this.goal === "Lose Weight") {
-    $('#progress').html(`Progress: ${this.progress} lbs. Lost`)
-  } else {
-    $('#progress').html(`Progress: ${this.progress} lbs. Gained`)
-  }
+  this.renderClientProgress()
+  
 
   $('.notes-list').empty()
   this.notes.forEach(n => {
@@ -60,6 +56,14 @@ Client.prototype.renderClientStats = function() {
   $('#weight').html(`Current Weight: ${this.weight}`)
   $('#goal').html(`Goal: ${this.goal}`)
   $('.note-header').html(`Add a Note For ${this.name}:`)
+}
+
+Client.prototype.renderClientProgress = function() {
+  if (this.goal === "Lose Weight") {
+    $('#progress').html(`Progress: ${this.progress} lbs. Lost`)
+  } else {
+    $('#progress').html(`Progress: ${this.progress} lbs. Gained`)
+  }
 }
 
 $(function() {
