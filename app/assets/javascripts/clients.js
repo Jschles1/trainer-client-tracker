@@ -37,12 +37,7 @@ Client.prototype.clientIndexFormatter = function() {
 }
 
 Client.prototype.renderClientShow = function() {
-  $('#previous').attr("data-id", this.id)
-  $('#next').attr("data-id", this.id)
-  $('#edit-client').attr("href", "/clients/" + this.id + "/edit")
-  $('#remove-client').attr("href", "/clients/" + this.id)
-  $('#note_client_id').attr("value", this.id)
-  $('#clear-notes').attr("data-id", this.id)
+  changeShowIdValues(this.id)
 
   $('#client-name').html(this.name)
   $('#email').html(`Email: ${this.email}`)
@@ -159,4 +154,13 @@ function getClient(id) {
     data.goal, data.appointments[0].date, data.progress, data.notes)
     client.renderClientShow()
   })
+}
+
+function changeShowIdValues(id) {
+  $('#previous').attr("data-id", id)
+  $('#next').attr("data-id", id)
+  $('#edit-client').attr("href", "/clients/" + id + "/edit")
+  $('#remove-client').attr("href", "/clients/" + id)
+  $('#note_client_id').attr("value", id)
+  $('#clear-notes').attr("data-id", id)
 }
