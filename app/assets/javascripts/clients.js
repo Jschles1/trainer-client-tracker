@@ -40,12 +40,7 @@ Client.prototype.renderClientShow = function() {
   changeShowIdValues(this.id)
   this.renderClientStats()  
   this.renderClientProgress()
-  
-
-  $('.notes-list').empty()
-  this.notes.forEach(n => {
-    $('.notes-list').append(`<li>${[n.text]}</li>`)
-  })
+  this.renderClientNotes()
 }
 
 Client.prototype.renderClientStats = function() {
@@ -64,6 +59,13 @@ Client.prototype.renderClientProgress = function() {
   } else {
     $('#progress').html(`Progress: ${this.progress} lbs. Gained`)
   }
+}
+
+Client.prototype.renderClientNotes = function() {
+  $('.notes-list').empty()
+  this.notes.forEach(n => {
+    $('.notes-list').append(`<li>${[n.text]}</li>`)
+  })
 }
 
 $(function() {
