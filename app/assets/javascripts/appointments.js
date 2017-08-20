@@ -32,14 +32,14 @@ Appointment.prototype.formatRow = function() {
 
 $(function() {
   $('a.load_appointments').on('click', function(e) {
-    e.preventDefault()
-    $('.most').hide()
-    $('.index-header').html("Your Appointments:")
-    $('.index-list').html(tableHeader)
+    e.preventDefault();
+    $('.most').hide();
+    $('.index-header').html("Your Appointments:");
+    $('.index-list').html(tableHeader);
     $.get("/appointments.json", function(data) {
       data.forEach(a => {
-        const newAppointment = new Appointment(a.id, a.user_id, a.client_id, a.client.name, a.date)
-        $('tbody').append(newAppointment.formatRow())
+        const newAppointment = new Appointment(a.id, a.user_id, a.client_id, a.client.name, a.date);
+        $('tbody').append(newAppointment.formatRow());
       })
     })
   })
