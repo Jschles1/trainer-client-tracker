@@ -38,15 +38,8 @@ Client.prototype.clientIndexFormatter = function() {
 
 Client.prototype.renderClientShow = function() {
   changeShowIdValues(this.id)
+  this.renderClientStats()  
 
-  $('#client-name').html(this.name)
-  $('#email').html(`Email: ${this.email}`)
-  $('#phone').html(`Phone: ${this.phone}`)
-  $('#age').html(`Age: ${this.age}`)
-  $('#weight').html(`Current Weight: ${this.weight}`)
-  $('#goal').html(`Goal: ${this.goal}`)
-  $('.note-header').html(`Add a Note For ${this.name}:`)
-    
   if (this.goal === "Lose Weight") {
     $('#progress').html(`Progress: ${this.progress} lbs. Lost`)
   } else {
@@ -57,6 +50,16 @@ Client.prototype.renderClientShow = function() {
   this.notes.forEach(n => {
     $('.notes-list').append(`<li>${[n.text]}</li>`)
   })
+}
+
+Client.prototype.renderClientStats = function() {
+  $('#client-name').html(this.name)
+  $('#email').html(`Email: ${this.email}`)
+  $('#phone').html(`Phone: ${this.phone}`)
+  $('#age').html(`Age: ${this.age}`)
+  $('#weight').html(`Current Weight: ${this.weight}`)
+  $('#goal').html(`Goal: ${this.goal}`)
+  $('.note-header').html(`Add a Note For ${this.name}:`)
 }
 
 $(function() {
