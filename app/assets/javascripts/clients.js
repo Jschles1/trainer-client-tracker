@@ -27,7 +27,7 @@ Client.prototype.clientIndexFormatter = function() {
   return `
     <tr>
       <td><a href="/clients/${this.id}">${this.name}</a></td>
-      <td><button class="btn btn-default" data-id="${this.id}" onClick="toggleAppointment(${this.id})">Show Next Appointment:</button></td>
+      <td><button class="btn btn-default" onClick="toggleAppointment(${this.id})">Show Next Appointment:</button></td>
     </tr>
     <tr class="app-row-${this.id}">
       <td>${moment(this.appointment).format('LLL')}</td>
