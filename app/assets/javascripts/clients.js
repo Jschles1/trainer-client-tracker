@@ -132,7 +132,7 @@ function getNext(id, array) {
   var next = id + 1
   while (next <= array[array.length - 1]) {
     if (array.includes(next)) {
-      renderClient(next)
+      getClient(next)
       break;
     } else {
       ++next
@@ -145,7 +145,7 @@ function getPrevious(id, array) {
   var prev = id - 1
   while (prev >= descArray[descArray.length - 1]) {
     if (descArray.includes(prev)) {
-      renderClient(prev)
+      getClient(prev)
       break;
     } else {
       --prev
@@ -153,7 +153,7 @@ function getPrevious(id, array) {
   }
 }
 
-function renderClient(id) {
+function getClient(id) {
   $.get("/clients/" + id + ".json", function(data) {
     const client = new Client(data.id, data.name, data.email, data.phone, data.age, data.weight,
     data.goal, data.appointments[0].date, data.progress, data.notes)
