@@ -9,14 +9,12 @@ var tableHeader = `
   </table>
 `
 
-class Appointment {
-  constructor(id, user_id, client_id, client_name, date) {
-    this.id = id
-    this.user_id = user_id
-    this.client_id = client_id
-    this.client_name = client_name
-    this.date = date
-  }
+function Appointment(id, user_id, client_id, client_name, date) {
+  this.id = id
+  this.user_id = user_id
+  this.client_id = client_id
+  this.client_name = client_name
+  this.date = date
 }
 
 Appointment.prototype.formatRow = function() {
