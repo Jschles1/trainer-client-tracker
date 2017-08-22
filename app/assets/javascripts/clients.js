@@ -25,7 +25,7 @@ Client.prototype.clientIndexFormatter = function() {
   return `
     <tr>
       <td><a href="/clients/${this.id}">${this.name}</a></td>
-      <td><button class="btn btn-default" onClick="toggleAppointment(${this.id})">Show Next Appointment:</button></td>
+      <td><button class="btn btn-default app" data-id="${this.id}">Show Next Appointment:</button></td>
     </tr>
     <tr class="app-row-${this.id}">
       <td>${moment(this.appointment).format('LLL')}</td>
@@ -80,7 +80,11 @@ $(function() {
         $('tbody').append(newClient.clientIndexFormatter());
         $(`.app-row-${newClient.id}`).hide();
       })
+      $('.btn.btn-default.app').on('click', function() {
+        toggleAppointment(this.dataset.id);
+      })
     })
+    
   })
   
   $('#note-form').on('submit', function(e) {
