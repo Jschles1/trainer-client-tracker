@@ -9,16 +9,16 @@ var tableHeader = `
 `
 
 function Client(id, name, email, phone, age, weight, goal, appointment, progress, notes) {
-  this.id = id
-  this.name = name
-  this.email = email
-  this.phone = phone
-  this.age = age
-  this.weight = weight
-  this.goal = goal
-  this.appointment = appointment
-  this.progress = progress
-  this.notes = notes
+  this.id = id;
+  this.name = name;
+  this.email = email;
+  this.phone = phone;
+  this.age = age;
+  this.weight = weight;
+  this.goal = goal;
+  this.appointment = appointment;
+  this.progress = progress;
+  this.notes = notes;
 }
 
 Client.prototype.clientIndexFormatter = function() {
