@@ -68,6 +68,7 @@ Client.prototype.renderClientNotes = function() {
 
 $(function() {
   $('.most').hide();
+  // Load Client index resource:
   $('a.load_clients').on('click', function(e) {
     e.preventDefault();
     $('.index-header').html("Your Clients:");
@@ -75,18 +76,20 @@ $(function() {
     $('.index-list').html(tableHeader);
     $.get("/clients.json", function(data) {
       data.forEach(c => {
+        // Translate JSON responses to JavaScript Model Objects:
         const newClient = new Client(c.id, c.name, c.email, c.phone, c.age, c.weight,
         c.goal, c.appointments[0].date, c.progress);
         $('tbody').append(newClient.clientIndexFormatter());
         $(`.app-row-${newClient.id}`).hide();
       })
+      // Reveal has_many relationship w/ appointment:
       $('.btn.btn-default.app').on('click', function() {
         toggleAppointment(this.dataset.id);
       })
-    })
-    
+    }) 
   })
   
+  // Create and render Note resource w/o page refresh:
   $('#note-form').on('submit', function(e) {
     e.preventDefault();
     var action = $(this).attr("action");
@@ -99,6 +102,7 @@ $(function() {
       })
   })
 
+  // Delete all Note objects that belong_to Client w/o page refresh:
   $('#clear-notes').on('click', function() {
     var clientId = this.dataset.id;
     $.ajax({
@@ -113,6 +117,7 @@ $(function() {
     });
   })
 
+  // Render Client show page:
   $('.btn.btn-secondary.btn-sm').on('click', function() {
     var action = this.id;
     var clientId =  parseInt(this.dataset.id);

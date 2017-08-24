@@ -29,6 +29,7 @@ Appointment.prototype.formatRow = function() {
 }
 
 $(function() {
+  // Load Appointment index resource:
   $('a.load_appointments').on('click', function(e) {
     e.preventDefault();
     $('.most').hide();
