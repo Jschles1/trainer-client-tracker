@@ -8,17 +8,10 @@ var tableHeader = `
   </table>
 `
 
-function Client(id, name, email, phone, age, weight, goal, appointment, progress, notes) {
-  this.id = id;
-  this.name = name;
-  this.email = email;
-  this.phone = phone;
-  this.age = age;
-  this.weight = weight;
-  this.goal = goal;
-  this.appointment = appointment;
-  this.progress = progress;
-  this.notes = notes;
+function Client(attributes) {
+  for (var key in attributes) {
+    this[key] = attributes[key]
+  }
 }
 
 Client.prototype.clientIndexFormatter = function() {
@@ -75,10 +68,9 @@ $(function() {
     $('.most').show();
     $('.index-list').html(tableHeader);
     $.get("/clients.json", function(data) {
-      data.forEach(c => {
-        // Translate JSON responses to JavaScript Model Objects:
-        const newClient = new Client(c.id, c.name, c.email, c.phone, c.age, c.weight,
-        c.goal, c.appointments[0].date, c.progress);
+      data.forEach(clientAttributes => {
+        // Translate JSON responses to JavaScript Model Objects
+        const newClient = new Client(clientAttributes);
         $('tbody').append(newClient.clientIndexFormatter());
         $(`.app-row-${newClient.id}`).hide();
       })
@@ -92,6 +84,7 @@ $(function() {
   // Create and render Note resource w/o page refresh:
   $('#note-form').on('submit', function(e) {
     e.preventDefault();
+    var form = this;
     var action = $(this).attr("action");
     var params = $(this).serialize();
     $.post(action, params)
@@ -99,6 +92,7 @@ $(function() {
         $('#ajax_submit').attr("disabled", false);
         var note = `<li>${response["text"]}</li>`;
         $('.notes-list').append(note);
+        form.reset()
       })
   })
 
@@ -166,8 +160,7 @@ function getPrevious(id, array) {
 
 function getClient(id) {
   $.get("/clients/" + id + ".json", function(data) {
-    const client = new Client(data.id, data.name, data.email, data.phone, data.age, data.weight,
-    data.goal, data.appointments[0].date, data.progress, data.notes);
+    const client = new Client(data);
     client.renderClientShow();
   })
 }
