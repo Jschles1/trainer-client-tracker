@@ -12,5 +12,6 @@ module TrainerClientTracker
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = "Eastern Time (US & Canada)"
+    config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 ] ]"
   end
 end
