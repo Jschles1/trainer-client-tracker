@@ -7,7 +7,7 @@ end
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'active_model_serializers'
-gem 'figaro'
+gem 'figaro', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
