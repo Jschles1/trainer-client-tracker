@@ -16,6 +16,8 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ $normalBorder: 2px solid black;
+
  body {
   background-image: url("Gym.jpg");
   background-size: cover;
@@ -23,13 +25,13 @@
 
  .container {
    background: white;
-   border: 2px solid black;
+   border: $normalBorder;
    border-radius: 5px;
    margin: 20px auto;
  }
 
  .container-fluid {
-   border-bottom: 2px solid black;
+   border-bottom: $normalBorder;
    color: black;
  }
 
@@ -46,7 +48,7 @@
  }
 
  .show-view {
-   border-top: 2px solid black;
+   border-top: $normalBorder;
    padding-top: 15px; 
  }
 
