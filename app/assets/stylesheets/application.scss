@@ -16,7 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- $normalBorder: 2px solid black;
+ $normalBorder: 2px solid rgb(75, 74, 74);
 
  body {
   background-image: url("Gym.jpg");
@@ -30,10 +30,10 @@
    margin: 20px auto;
  }
 
- .container-fluid {
-   border-bottom: $normalBorder;
-   color: black;
- }
+.navbar.navbar-default {
+  border: $normalBorder;
+  color: black;
+}
 
  .alert.alert-danger {
    margin-top: 15px;
@@ -44,7 +44,7 @@
  }
 
  .navbar-header {
-   margin-top: 8px;
+   margin-top: 5px;
  }
 
  .show-view {
