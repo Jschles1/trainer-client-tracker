@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :email
       t.text :password_digest
-      t.string :uid, limit: 8
+      t.string :uid
     end
   end
 end

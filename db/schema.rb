@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170812003157) do
     t.string   "name"
     t.string   "email"
     t.text     "password_digest"
-    t.string   "uid",              limit: 8
+    t.string   "uid"
     t.string   "provider"
     t.text     "oauth_token"
     t.datetime "oauth_expires_at"
