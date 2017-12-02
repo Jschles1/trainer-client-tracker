@@ -1,3 +1,4 @@
+// Template literal for appointments table header
 var tableHeader = `
   <table class="table">
     <tr class="header-row">
@@ -9,6 +10,7 @@ var tableHeader = `
   </table>
 `
 
+// Create Appointment prototype
 function Appointment(id, user_id, client_id, client_name, date) {
   this.id = id;
   this.user_id = user_id;
@@ -17,6 +19,7 @@ function Appointment(id, user_id, client_id, client_name, date) {
   this.date = date;
 }
 
+// Take JS Model objects and create table rows from them
 Appointment.prototype.formatRow = function() {
   return `
     <tr>
@@ -29,14 +32,16 @@ Appointment.prototype.formatRow = function() {
 }
 
 $(function() {
-  // Load Appointment index resource:
+  // Load Appointment index resource
   $('a.load_appointments').on('click', function(e) {
     e.preventDefault();
     $('.most').hide();
     $('.index-header').html("Your Appointments:");
+    // Render tableHeader template to page
     $('.index-list').html(tableHeader);
     $.get("/appointments.json", function(data) {
       data.forEach(a => {
+        // Translate JSON responses to JS model objects
         const newAppointment = new Appointment(a.id, a.user_id, a.client_id, a.client.name, a.date);
         $('tbody').append(newAppointment.formatRow());
       })

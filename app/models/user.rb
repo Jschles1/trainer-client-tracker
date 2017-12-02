@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8 }
   has_secure_password
 
+  # Creates or logs in user via Facebook
   def self.from_omniauth(auth)
     self.where(:uid => auth["uid"]).first_or_create do |user|
       user.name = auth["info"]["name"]

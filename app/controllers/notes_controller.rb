@@ -1,8 +1,10 @@
 class NotesController < ApplicationController
 
+  # Render notes onto page via AJAX
   def index
   end
 
+  # Submission of new note form
   def create
     @note = Note.new(note_params)
     if @note.save
@@ -10,6 +12,7 @@ class NotesController < ApplicationController
     end
   end
 
+  # Destroy notes
   def destroy
     @client = Client.find_by(id: params[:client_id])
     @client.notes.destroy_all
