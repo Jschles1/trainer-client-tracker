@@ -30,6 +30,14 @@
    margin: 20px auto;
  }
 
+ .form-container {
+   padding: 20px;
+ }
+
+ h1 {
+  text-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+ }
+
 .navbar.navbar-default {
   border: $normalBorder;
   color: black;
@@ -68,4 +76,11 @@
 
  .btn.btn-danger.btn-sm {
    margin-top: 5px;
+ }
+
+ .grid {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-column-gap: 1px;
+   margin-bottom: 10px;
  }
