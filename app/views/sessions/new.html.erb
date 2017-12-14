@@ -1,13 +1,23 @@
-<h1>Log In:</h1>
-<br></br>
-<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
-  <%= f.label :email %>
+<div class="form-container">
+  <h1>Log In:</h1>
   <br></br>
-  <%= f.text_field :email %>
-  <br></br>
-  <%= f.label :password %>
-  <br></br>
-  <%= f.password_field :password %>
-  <br></br>
-  <%= f.submit "Log In"%>
-<% end %>
+  <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+    <div class="grid signup-login">
+      <div class="box">
+        <%= f.label :email, "Email:" %>
+        <br></br>
+        <%= f.text_field :email %>
+      </div>
+
+      <div class="box>"
+        <%= f.label :password, "Password:" %>
+        <br></br>
+        <%= f.password_field :password %>
+      </div>
+      
+      <div class="box">
+        <%= f.submit "Log In", class: "btn btn-primary btn-lg btn-block", id: "login-button"%>
+      </div>
+    </div>
+  <% end %>
+</div>
