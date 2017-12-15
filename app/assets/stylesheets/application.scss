@@ -86,6 +86,9 @@
    display: grid;
    grid-column-gap: 1px;
    margin-bottom: 10px;
+   &.client-partial {
+    grid-template-columns: 1fr 1fr 1fr;
+   }
    &.signup-login {
     grid-template-columns: 1fr 1fr 1fr;
    }

@@ -1,7 +1,7 @@
 <div class="form-container">
   <%= render partial: 'layouts/errors', locals: { object: @client } %>
   <%= form_for @client do |f| %>
-    <div class="grid new-client">
+    <div class="grid client-partial">
       <div class="box">
         <%= f.label :name, "Name:" %>
         <br></br>
