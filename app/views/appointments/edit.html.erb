@@ -1,9 +1,10 @@
 <%= render partial: 'layouts/errors', locals: { object: @appointment } %>
 <h1>Reschedule Appointment for <%= @appointment.client.name %>:</h1>
+<br></br>
 <%= form_for @appointment do |f| %>
   <%= f.label :date, "Appointment Date & Time" %>
   <br></br>
   <%= f.datetime_select :date, order: [:month, :day, :year, :hour], ampm: true %>
   <br></br>
-  <%= f.submit "Reschedule Appointment" %>
+  <%= f.submit "Reschedule Appointment", class: "btn btn-primary btn-lg edit-app" %>
 <% end %>

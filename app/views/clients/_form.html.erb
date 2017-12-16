@@ -1,39 +1,38 @@
-<div class="form-container">
-  <%= render partial: 'layouts/errors', locals: { object: @client } %>
-  <%= form_for @client do |f| %>
-    <div class="grid client-partial">
-      <div class="box">
-        <%= f.label :name, "Name:" %>
-        <br></br>
-        <%= f.text_field :name %>
-        <br></br>
-        <%= f.label :email, "Email: (name@email.com)" %>
-        <br></br>
-        <%= f.text_field :email %>
-        <br></br>
-        <%= f.label :phone, "Phone Number: (XXX-XXX-XXXX)" %>
-        <br></br>
-        <%= f.telephone_field :phone %>
-      </div>
-      
-      <div class="box">
-        <%= f.label :age, "Age:" %>
-        <br></br>
-        <%= f.number_field :age %>
-        <br></br>
-        <%= f.label :weight, "Weight: (lbs.)" %>
-        <br></br>
-        <%= f.number_field :weight %>
-        <br></br>
-        <%= f.label :goal, "Client Goal:" %>
-        <br></br>
-        <%= f.select :goal, ["Lose Weight", "Gain Weight"] %>
-      </div>
-      
-      <div class="box">
-        <%= appointment_fields(f, @client, @appointment) %>
-        <%= f.submit "Add Client", class: "btn btn-primary btn-lg btn-block" %>
-      </div>
+<%= render partial: 'layouts/errors', locals: { object: @client } %>
+<%= form_for @client do |f| %>
+  <div class="grid client-partial">
+    <div class="box">
+      <%= f.label :name, "Name:" %>
+      <br></br>
+      <%= f.text_field :name %>
+      <br></br>
+      <%= f.label :email, "Email: (name@email.com)" %>
+      <br></br>
+      <%= f.text_field :email %>
+      <br></br>
+      <%= f.label :phone, "Phone Number: (XXX-XXX-XXXX)" %>
+      <br></br>
+      <%= f.telephone_field :phone %>
     </div>
-  <% end %>
-</div>
+      
+    <div class="box">
+      <%= f.label :age, "Age:" %>
+      <br></br>
+      <%= f.number_field :age %>
+      <br></br>
+      <%= f.label :weight, "Weight: (lbs.)" %>
+      <br></br>
+      <%= f.number_field :weight %>
+      <br></br>
+      <%= f.label :goal, "Client Goal:" %>
+      <br></br>
+      <%= f.select :goal, ["Lose Weight", "Gain Weight"] %>
+    </div>
+      
+    <div class="box">
+      <%= appointment_fields(f, @client, @appointment) %>
+      <%= f.submit "Submit", class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+<% end %>
+
