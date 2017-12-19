@@ -55,6 +55,24 @@
    margin-top: 5px;
  }
 
+ .nav.navbar-nav > li {
+   border: $normalBorder;
+   border-radius: 3px;
+   margin: 1px 5px 5px;
+ }
+
+ .nav.navbar-nav > li > a {
+   color: black;
+ }
+
+ .nav.navbar-nav > li:hover {
+   background-color: black;
+ }
+
+ .nav.navbar-nav > li > a:hover {
+   color: white;
+ }
+
  .show-view {
    border-top: $normalBorder;
    padding-top: 15px; 
