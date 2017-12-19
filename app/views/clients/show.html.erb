@@ -1,8 +1,8 @@
 <button id="previous" data-id="<%= @client.id %>" class="btn btn-secondary btn-sm">Previous</button>
 <button id="next" data-id="<%= @client.id %>" class="btn btn-secondary btn-sm">Next</button>
 <br></br>
-<div class="show-view">
-  <div class="col-lg-6">
+<div class="grid show-view">
+  <div class="box">
     <%= link_to "Edit Client", edit_client_path(@client), class: "btn btn-primary", id: "edit-client"  %>
     <%= link_to "Remove Client", @client, method: :delete, class: "btn btn-danger", id: "remove-client", data: { confirm: "Are you sure you want to remove this client?" } %>
     <h2 id="client-name"><%= client_name(@client) %></h2><br>
@@ -15,7 +15,7 @@
 
     <br></br>
   </div>
-  <div class="col-lg-6">
+  <div class="box">
     <h4>Notes:</h4>
     <ul class="notes-list">
       <% @notes.each do |note| %>
