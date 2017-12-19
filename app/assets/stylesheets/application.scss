@@ -38,10 +38,6 @@
   text-shadow: 4px 4px 0 rgba(0,0,0,0.1);
  }
 
- .index-header {
-  text-align: center;
- }
-
 .navbar.navbar-default {
   border: $normalBorder;
   color: black;
@@ -101,7 +97,10 @@
     grid-template-columns: 1fr 1fr 1fr;
    }
    &.show-view {
-     grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+   }
+   &.client-leaders {
+    grid-template-columns: 1fr 1fr;
    }
  }
 
