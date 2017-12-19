@@ -3,16 +3,16 @@
     <div class="navbar-header">
     <% if !logged_in? %>
       <ul class="nav navbar-nav">
-        <li><%= link_to "Log In", login_path %></li>
-        <li><%= link_to "Sign Up", signup_path %></li>
-        <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+        <li><%= link_to "Log In", login_path, class: "navbutton" %></li>
+        <li><%= link_to "Sign Up", signup_path, class: "navbutton" %></li>
+        <li><%= link_to "Sign in with Facebook", "/auth/facebook", class: "navbutton", id: "sign_in" %></li>
       </ul>
     <% else %>
       <p class="navbar-brand">Signed in as: <%= current_user.name %></p>
       <ul class="nav navbar-nav">
         <% if current_page?(dashboard_path) %>
-          <li><%= link_to "My Clients", clients_path, class: "load_clients" %></li>
-          <li><%= link_to "My Appointments", appointments_path, class: "load_appointments" %></li>
+          <li><%= link_to "My Clients", clients_path, class: "navbutton load_clients" %></li>
+          <li><%= link_to "My Appointments", appointments_path, class: " navbutton load_appointments" %></li>
         <% else %>
           <li><%= link_to "Dashboard", dashboard_path %></li>
         <% end %>
